@@ -23,9 +23,11 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 
 | Integrante | Pasta | Casos automatizados |
 |---|---|---|
-| Isabelle | `isabelle/` | COMPLETAR |
-| [Nome] | `[pasta]/` | COMPLETAR |
-| [Nome] | `[pasta]/` | COMPLETAR |
+| Bruno       | `bruno/`    | COMPLETAR |
+| Gabriela    | `gabriela/` | COMPLETAR |
+| Isabelle    | `isabelle/` | COMPLETAR |
+| Laura       | `laura/`    | COMPLETAR |
+| Pedro       | `pedro/`    | COMPLETAR |
 
 ---
 
