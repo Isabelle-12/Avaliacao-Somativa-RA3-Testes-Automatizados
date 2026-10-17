@@ -154,9 +154,6 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 - **Tags:** uma por funcionalidade (ex.: `login`, `pedido`, `portfolio`).
 - **Commits:** mensagens curtas, no imperativo, em português (ex.: `Adiciona testes de login`).
 - **Fluxo no Git:** `pull` antes de começar e `push` ao terminar, alterando só a própria pasta.
-- **Uso de IA:** fazer commit antes de pedir alterações, colar apenas os próprios arquivos,
-  pedir só o trecho novo e conferir o `git diff` antes de aceitar.
-- **Dados sensíveis:** nunca versionar senhas reais ou dados pessoais; apenas usuários de teste.
 
 ---
 
