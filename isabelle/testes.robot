@@ -10,3 +10,14 @@ CT00 - Login como cliente (teste de base)
     [Tags]    fumaca    login
     Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
     Verificar Login Realizado
+
+CT17 - Definir preço base de material (EM CONSTRUÇÃO)
+    [Documentation]    Fabricante define o preço por grama de um material e salva
+    [Tags]    material    ct17
+    Fazer Login    ${EMAIL_MAKER}    ${SENHA_MAKER}
+    Verificar Login Realizado
+    Acessar Perfil Do Fabricante
+    Abrir Formulario De Material
+    # Diagnóstico temporário: mostra no terminal quais materiais o select oferece
+    ${opcoes}=    Get List Items    ${SELECT_MATERIAL}
+    Log To Console    Opções do select: ${opcoes}
