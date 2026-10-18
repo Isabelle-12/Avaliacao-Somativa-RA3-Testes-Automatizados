@@ -20,6 +20,15 @@ ${BOTAO_ENTRAR}     css:.btn-primary-custom
 ${LINK_PERFIL}               css:a.nav-link[href*='perfil-fabricante']
 ${BOTAO_ADD_MATERIAL}        css:button[onclick='abrirModalMaterial()']
 ${SELECT_MATERIAL}           id:modalMatTipo
+${CAMPO_PRECO_MATERIAL}      id:modalMatPreco
+${BOTAO_SALVAR_MATERIAL}     id:btnSalvarMaterial
+
+
+# Dados do CT17 (conforme o plano de testes)
+${MATERIAL_TESTE}           PETG
+${PRECO_TESTE}              0.19
+${PRECO_EXIBIDO}            0,19
+
 
 
 *** Keywords ***
@@ -58,3 +67,25 @@ Abrir Formulario De Material
     Sleep    1s
     Click Element    ${BOTAO_ADD_MATERIAL}
     Wait Until Element Is Visible    ${SELECT_MATERIAL}    timeout=10s
+
+Preencher Material
+    [Arguments]    ${material}    ${preco}
+    Wait Until Page Contains Element    css:#modalMatTipo option[value='${material}']    timeout=10s
+    Select From List By Value    ${SELECT_MATERIAL}    ${material}
+    Input Text    ${CAMPO_PRECO_MATERIAL}    ${preco}
+
+Salvar Material
+    Click Element    ${BOTAO_SALVAR_MATERIAL}
+
+# NOVO: conta os cards da lista que têm o nome e o preço informados
+Contar Materiais
+    [Arguments]    ${nome}    ${preco}
+    ${qtd}=    Get Element Count
+    ...    xpath://div[@id='portfolioMateriais']//div[contains(@class,'portfolio-item')][.//strong[normalize-space()='${nome}']][.//small[contains(.,'${preco}')]]
+    RETURN    ${qtd}
+
+# NOVO: compara a contagem atual com a esperada
+Verificar Quantidade De Materiais
+    [Arguments]    ${nome}    ${preco}    ${esperado}
+    ${qtd}=    Contar Materiais    ${nome}    ${preco}
+    Should Be Equal As Integers    ${qtd}    ${esperado}
