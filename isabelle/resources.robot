@@ -1,5 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
+Library           OperatingSystem
 
 *** Variables ***
 ${BROWSER}          Chrome
@@ -29,6 +30,7 @@ ${MATERIAL_TESTE}           PETG
 ${PRECO_TESTE}              0.19
 ${PRECO_EXIBIDO}            0,19
 
+${LISTA_MATERIAIS}          id:portfolioMateriais
 
 
 *** Keywords ***
@@ -36,10 +38,25 @@ Abrir Navegador
     Open Browser    ${URL}    ${BROWSER}
     ...    options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})
     Maximize Browser Window
+    # AJUSTADO: cada teste começa com os prints indo para a pasta padrão (resultados)
+    Set Screenshot Directory    ${OUTPUT DIR}
 
 Fechar Navegador
-    Capture Page Screenshot
+    # AJUSTADO: print final com nome claro, na pasta de evidências do teste
+    Capture Page Screenshot    tela_final_{index}.png
     Close Browser
+
+# NOVO: cria a pasta de evidências do caso dentro de resultados e manda os prints para ela
+Definir Pasta De Evidencias
+    [Arguments]    ${pasta}
+    ${caminho}=    Set Variable    ${OUTPUT DIR}${/}${pasta}
+    Create Directory    ${caminho}
+    Set Screenshot Directory    ${caminho}
+
+# NOVO: print de um passo importante, com nome escolhido por nós
+Registrar Evidencia
+    [Arguments]    ${nome}
+    Capture Page Screenshot    ${nome}.png
 
 Fazer Login
     [Arguments]    ${email}    ${senha}
