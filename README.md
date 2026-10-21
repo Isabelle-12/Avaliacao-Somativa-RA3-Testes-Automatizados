@@ -108,6 +108,14 @@ Todos os comandos são executados **a partir da raiz do repositório**.
 py -m robot --outputdir isabelle/resultados isabelle/testes.robot
 ```
 
+Para executar especificamente os testes do Bruno no Windows, também é possível
+usar o arquivo `bruno\executar_testes.bat`. Os relatórios, logs, XML e capturas
+serão gerados automaticamente em `bruno\resultados`:
+
+```bat
+bruno\executar_testes.bat
+```
+
 **Executar apenas uma tag** (por exemplo, `login`):
 
 ```bash
