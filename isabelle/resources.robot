@@ -32,6 +32,10 @@ ${PRECO_EXIBIDO}            0,19
 
 ${LISTA_MATERIAIS}          id:portfolioMateriais
 
+# Dados do CT18
+${PRECO_INVALIDO}               0
+${MENSAGEM_PRECO_INVALIDO}      Informe um preço por grama válido.
+
 
 *** Keywords ***
 Abrir Navegador
@@ -42,8 +46,7 @@ Abrir Navegador
     Set Screenshot Directory    ${OUTPUT DIR}
 
 Fechar Navegador
-    # AJUSTADO: print final com nome claro, na pasta de evidências do teste
-    Capture Page Screenshot    tela_final_{index}.png
+    Run Keyword And Ignore Error    Capture Page Screenshot    tela_final_{index}.png
     Close Browser
 
 # NOVO: cria a pasta de evidências do caso dentro de resultados e manda os prints para ela
@@ -106,3 +109,12 @@ Verificar Quantidade De Materiais
     [Arguments]    ${nome}    ${preco}    ${esperado}
     ${qtd}=    Contar Materiais    ${nome}    ${preco}
     Should Be Equal As Integers    ${qtd}    ${esperado}
+
+# NOVO: conta TODOS os materiais da lista (não só um tipo)
+Contar Todos Os Materiais
+    ${qtd}=    Get Element Count    css:#portfolioMateriais .portfolio-item
+    RETURN    ${qtd}
+
+# NOVO: confere o texto do alerta nativo do navegador e clica em OK
+Verificar Alerta De Preco Invalido
+    Alert Should Be Present    ${MENSAGEM_PRECO_INVALIDO}    action=ACCEPT    timeout=5s
