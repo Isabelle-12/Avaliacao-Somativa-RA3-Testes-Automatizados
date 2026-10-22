@@ -67,3 +67,72 @@ CT18 - Fabricante tenta inserir um valor de material igual ou inferior a zero
     Registrar Evidencia    CT18_06_lista_apos_recarregar
     ${depois}=    Contar Todos Os Materiais
     Should Be Equal As Integers    ${depois}    ${antes}
+
+
+CT19 - Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso
+    [Documentation]    Cliente solicita um pedido de impressão ao fabricante CaCa 3D (Carlos).
+    ...    Esperado (plano): o pedido é registrado e o sistema exibe confirmação com o resumo.
+    ...    Resultado esperado desta automação: FALHA na verificação do resumo (defeito conhecido,
+    ...    HU 22 critério 1): o sistema redireciona direto para "Meus Projetos".
+    ...    O teste continua após essa falha para conferir que o pedido foi registrado.
+    ...    Evidências: resultados/CT19_Evidencias
+
+    [Tags]    pedido    ct19    defeito_conhecido
+
+    Definir Pasta De Evidencias    CT19_Evidencias
+
+    Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
+    Verificar Login Realizado
+    Registrar Evidencia    CT19_01_login_realizado
+    ${antes}=    Contar Projetos Do Cliente    ${NOME_PROJETO}
+    Acessar Lista De Fabricantes
+    Registrar Evidencia    CT19_02_lista_de_fabricantes
+    Abrir Portfolio Do Fabricante
+    Registrar Evidencia    CT19_03_portfolio_do_fabricante
+    Abrir Formulario De Pedido
+    Registrar Evidencia    CT19_04_formulario_de_pedido
+    Preencher Dados Do Pedido    ${NOME_PROJETO}    ${DESCRICAO_PROJETO}    ${PRAZO_PEDIDO}    ${ENDERECO_PEDIDO}
+    Registrar Evidencia    CT19_05_dados_preenchidos
+    Adicionar Parte Personalizada    ${PARTE_NOME_TESTE}    ${PARTE_DESCRICAO_TESTE}    ${PARTE_COR_TESTE}
+    Registrar Evidencia    CT19_06_parte_preenchida
+    Enviar Pedido
+    Aguardar Resposta Do Envio
+    Registrar Evidencia    CT19_07_apos_enviar
+    Run Keyword And Continue On Failure    Verificar Confirmacao Com Resumo
+    ${depois}=    Contar Projetos Do Cliente    ${NOME_PROJETO}
+    Registrar Evidencia    CT19_08_meus_projetos
+    ${esperado}=    Evaluate    ${antes} + 1
+    Should Be Equal As Integers    ${depois}    ${esperado}
+    ...    msg=O pedido não apareceu em "Meus Projetos".
+
+CT20 - Cliente tenta confirmar o pedido sem preencher um ou mais campos obrigatórios
+    [Documentation]    Cliente tenta enviar o pedido ao fabricante CaCa 3D (Carlos) deixando o
+    ...    nome do projeto em branco e preenchendo apenas o prazo.
+    ...    Esperado: o sistema não processa o pedido, permanece no formulário e destaca o campo vazio.
+    ...    Observação: o destaque visual (contorno) não é avaliado pela automação; o teste verifica
+    ...    que o campo está inválido e com o foco do navegador.
+    ...    Evidências: resultados/CT20_Evidencias
+
+    [Tags]    pedido    ct20
+
+    Definir Pasta De Evidencias    CT20_Evidencias
+    
+    Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
+    Verificar Login Realizado
+    Registrar Evidencia    CT20_01_login_realizado
+    ${antes}=    Contar Todos Os Projetos
+    Acessar Lista De Fabricantes
+    Registrar Evidencia    CT20_02_lista_de_fabricantes
+    Abrir Portfolio Do Fabricante
+    Registrar Evidencia    CT20_03_portfolio_do_fabricante
+    Abrir Formulario De Pedido
+    Registrar Evidencia    CT20_04_formulario_de_pedido
+    Definir Prazo    ${PRAZO_PEDIDO}
+    Registrar Evidencia    CT20_05_somente_prazo_preenchido
+    Clicar Em Enviar Pedido
+    Verificar Que O Pedido Nao Foi Processado
+    Verificar Campo Obrigatorio Destacado    nome_projeto
+    Registrar Evidencia    CT20_06_campo_obrigatorio_destacado
+    ${depois}=    Contar Todos Os Projetos
+    Should Be Equal As Integers    ${depois}    ${antes}
+    ...    msg=Um pedido foi criado mesmo com campos obrigatórios vazios.
