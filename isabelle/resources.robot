@@ -11,6 +11,8 @@ ${EMAIL_CLIENTE}    joao@email.com
 ${SENHA_CLIENTE}    123456
 ${EMAIL_MAKER}      maria@email.com
 ${SENHA_MAKER}      123456
+${EMAIL_CARLOS}             carlos@email.com
+${SENHA_CARLOS}             123456
 
 # Localizadores da tela de login
 ${CAMPO_EMAIL}      id:email
@@ -66,6 +68,19 @@ ${ENDERECO_PEDIDO}          Rua das Flores, 123, Centro, Curitiba, PR - 80000-00
 ${PARTE_NOME_TESTE}         Corpo
 ${PARTE_DESCRICAO_TESTE}    Corpo principal da varinha
 ${PARTE_COR_TESTE}          Rosa
+
+
+# Painel do fabricante: análise do pedido
+${BOTAO_ANALISAR_PEDIDO}    xpath:(//div[contains(@class,'card-body')][.//h6[contains(.,'${NOME_PROJETO}')]][contains(normalize-space(.),'João Silva')][.//span[contains(@class,'badge')][normalize-space()='Pendente']]//button[contains(normalize-space(.),'Analisar Pedido')])[1]
+${CAMPO_VALOR_FINAL}        id:modal-input-valor
+${CAMPO_PRAZO_PRODUCAO}     id:modal-input-prazo
+${BOTAO_ACEITAR_PEDIDO}     css:#botoes-acao-modal button[onclick='confirmarAceite()']
+
+# Dados do CT21 (conforme o plano de testes)
+${VALOR_FINAL}              1000
+${PRAZO_PRODUCAO}           16
+
+${SINO}    id:btn-sino
 
 
 *** Keywords ***
@@ -249,3 +264,58 @@ Verificar Campo Obrigatorio Destacado
     Should Be True    ${invalido}    msg=O campo ${id_campo} deveria estar marcado como inválido.
     ${foco}=    Execute Javascript    return document.activeElement.id;
     Should Be Equal    ${foco}    ${id_campo}    msg=O foco deveria estar no campo obrigatório vazio (${id_campo}).
+
+Abrir Analise Do Pedido
+    Wait Until Element Is Visible    ${BOTAO_ANALISAR_PEDIDO}    timeout=10s
+    Scroll Element Into View    ${BOTAO_ANALISAR_PEDIDO}
+    Click Element    ${BOTAO_ANALISAR_PEDIDO}
+    Wait Until Element Is Visible    ${CAMPO_VALOR_FINAL}    timeout=10s
+
+Preencher Aceite Do Pedido
+    [Arguments]    ${valor}    ${prazo}
+    Input Text    ${CAMPO_VALOR_FINAL}    ${valor}
+    Input Text    ${CAMPO_PRAZO_PRODUCAO}    ${prazo}
+
+# Lê o número do pedido pendente a partir do botão "Analisar Pedido" (ex.: verDetalhes(4) -> 4)
+Obter Id Do Pedido Pendente
+    ${onclick}=    Get Element Attribute    ${BOTAO_ANALISAR_PEDIDO}    onclick
+    ${id}=    Evaluate    ''.join(c for c in $onclick if c.isdigit())
+    RETURN    ${id}
+
+# O aceite dispara um alerta nativo do navegador, que o teste confere e fecha
+Aceitar Pedido
+    Scroll Element Into View    ${BOTAO_ACEITAR_PEDIDO}
+    Click Element    ${BOTAO_ACEITAR_PEDIDO}
+    Alert Should Be Present    Pedido aceito e cliente notificado com sucesso!    action=ACCEPT    timeout=10s
+
+Verificar Aceite No Painel Do Fabricante
+    [Arguments]    ${id_pedido}
+    Wait Until Page Contains    Pedido #${id_pedido} - ${NOME_PROJETO}    timeout=10s
+    # O botão "Analisar Pedido" daquele pedido não deve mais existir (saiu dos pendentes)
+    Page Should Not Contain Element    css:button[onclick='verDetalhes(${id_pedido})']
+
+# Apagar os cookies encerra a sessão do fabricante; depois entra como o cliente
+Trocar Para Cliente
+    Delete All Cookies
+    Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
+    Verificar Login Realizado
+
+Verificar Notificacao De Aceite
+    Click Element    ${SINO}
+    Wait Until Element Is Visible    css:#sino-dropdown.sino-aberto    timeout=10s
+    Wait Until Page Contains Element    css:#sino-lista li.sino-item    timeout=10s
+    # A notificação mais recente fica no topo da lista
+    ${titulo}=    Get Text    css:#sino-lista li.sino-item:first-child .sino-item-titulo
+    ${msg}=    Get Text    css:#sino-lista li.sino-item:first-child .sino-item-msg
+    Should Be Equal    ${titulo}    Pedido Aceito!
+    Should Contain    ${msg}    ${NOME_PROJETO}
+    Should Contain    ${msg}    prazo de ${PRAZO_PRODUCAO} dias
+    Should Match Regexp    ${msg}    R\\$\\s*1\\.?000,00
+
+Verificar Status Em Producao Para O Cliente
+    [Arguments]    ${id_pedido}
+    Go To    ${URL_MEUS_PROJETOS}
+    ${card}=    Set Variable    xpath://div[contains(@class,'projeto-card')][.//button[@onclick='verDetalhes(${id_pedido})']]
+    Wait Until Page Contains Element    ${card}    timeout=10s
+    Scroll Element Into View    ${card}
+    Element Should Contain    ${card}//span[contains(@class,'badge-status')]    Em produção

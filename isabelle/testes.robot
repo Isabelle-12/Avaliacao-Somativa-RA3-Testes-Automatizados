@@ -136,3 +136,33 @@ CT20 - Cliente tenta confirmar o pedido sem preencher um ou mais campos obrigat�
     ${depois}=    Contar Todos Os Projetos
     Should Be Equal As Integers    ${depois}    ${antes}
     ...    msg=Um pedido foi criado mesmo com campos obrigatórios vazios.
+
+CT21 - Fabricante aceita um pedido de impressão e verifica se o status muda para "Em produção"
+    [Documentation]    Fabricante Carlos (CaCa 3D) aceita o pedido "Star Wand 3D" do cliente João Silva.
+    ...    Esperado: o aceite é confirmado, o cliente é notificado e o status muda para "Em produção".
+    ...    Pré-condição: existe um pedido pendente "Star Wand 3D" do João (criado pelo CT19, que deve
+    ...    rodar antes). Cada execução consome esse pedido.
+    ...    O alerta de aceite é nativo do navegador e não aparece nos prints; o texto é validado.
+    ...    Evidências: resultados/CT21_Evidencias
+
+    [Tags]    pedido    ct21
+
+    Definir Pasta De Evidencias    CT21_Evidencias
+
+    Fazer Login    ${EMAIL_CARLOS}    ${SENHA_CARLOS}
+    Verificar Login Realizado
+    Wait Until Element Is Visible    ${BOTAO_ANALISAR_PEDIDO}    timeout=10s
+    ${id_pedido}=    Obter Id Do Pedido Pendente
+    Registrar Evidencia    CT21_01_pedidos_pendentes
+    Abrir Analise Do Pedido
+    Registrar Evidencia    CT21_02_detalhes_do_pedido
+    Preencher Aceite Do Pedido    ${VALOR_FINAL}    ${PRAZO_PRODUCAO}
+    Registrar Evidencia    CT21_03_aceite_preenchido
+    Aceitar Pedido
+    Verificar Aceite No Painel Do Fabricante    ${id_pedido}
+    Registrar Evidencia    CT21_04_pedido_em_andamento
+    Trocar Para Cliente
+    Verificar Notificacao De Aceite
+    Registrar Evidencia    CT21_05_notificacao_do_cliente
+    Verificar Status Em Producao Para O Cliente    ${id_pedido}
+    Registrar Evidencia    CT21_06_meus_projetos_do_cliente
