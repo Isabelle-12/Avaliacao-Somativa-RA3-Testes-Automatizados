@@ -67,3 +67,102 @@ CT18 - Fabricante tenta inserir um valor de material igual ou inferior a zero
     Registrar Evidencia    CT18_06_lista_apos_recarregar
     ${depois}=    Contar Todos Os Materiais
     Should Be Equal As Integers    ${depois}    ${antes}
+
+
+CT19 - Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso
+    [Documentation]    Cliente solicita um pedido de impressão ao fabricante CaCa 3D (Carlos).
+    ...    Esperado (plano): o pedido é registrado e o sistema exibe confirmação com o resumo.
+    ...    Resultado esperado desta automação: FALHA na verificação do resumo (defeito conhecido,
+    ...    HU 22 critério 1): o sistema redireciona direto para "Meus Projetos".
+    ...    O teste continua após essa falha para conferir que o pedido foi registrado.
+    ...    Evidências: resultados/CT19_Evidencias
+
+    [Tags]    pedido    ct19    defeito_conhecido
+
+    Definir Pasta De Evidencias    CT19_Evidencias
+
+    Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
+    Verificar Login Realizado
+    Registrar Evidencia    CT19_01_login_realizado
+    ${antes}=    Contar Projetos Do Cliente    ${NOME_PROJETO}
+    Acessar Lista De Fabricantes
+    Registrar Evidencia    CT19_02_lista_de_fabricantes
+    Abrir Portfolio Do Fabricante
+    Registrar Evidencia    CT19_03_portfolio_do_fabricante
+    Abrir Formulario De Pedido
+    Registrar Evidencia    CT19_04_formulario_de_pedido
+    Preencher Dados Do Pedido    ${NOME_PROJETO}    ${DESCRICAO_PROJETO}    ${PRAZO_PEDIDO}    ${ENDERECO_PEDIDO}
+    Registrar Evidencia    CT19_05_dados_preenchidos
+    Adicionar Parte Personalizada    ${PARTE_NOME_TESTE}    ${PARTE_DESCRICAO_TESTE}    ${PARTE_COR_TESTE}
+    Registrar Evidencia    CT19_06_parte_preenchida
+    Enviar Pedido
+    Aguardar Resposta Do Envio
+    Registrar Evidencia    CT19_07_apos_enviar
+    Run Keyword And Continue On Failure    Verificar Confirmacao Com Resumo
+    ${depois}=    Contar Projetos Do Cliente    ${NOME_PROJETO}
+    Registrar Evidencia    CT19_08_meus_projetos
+    ${esperado}=    Evaluate    ${antes} + 1
+    Should Be Equal As Integers    ${depois}    ${esperado}
+    ...    msg=O pedido não apareceu em "Meus Projetos".
+
+CT20 - Cliente tenta confirmar o pedido sem preencher um ou mais campos obrigatórios
+    [Documentation]    Cliente tenta enviar o pedido ao fabricante CaCa 3D (Carlos) deixando o
+    ...    nome do projeto em branco e preenchendo apenas o prazo.
+    ...    Esperado: o sistema não processa o pedido, permanece no formulário e destaca o campo vazio.
+    ...    Observação: o destaque visual (contorno) não é avaliado pela automação; o teste verifica
+    ...    que o campo está inválido e com o foco do navegador.
+    ...    Evidências: resultados/CT20_Evidencias
+
+    [Tags]    pedido    ct20
+
+    Definir Pasta De Evidencias    CT20_Evidencias
+    
+    Fazer Login    ${EMAIL_CLIENTE}    ${SENHA_CLIENTE}
+    Verificar Login Realizado
+    Registrar Evidencia    CT20_01_login_realizado
+    ${antes}=    Contar Todos Os Projetos
+    Acessar Lista De Fabricantes
+    Registrar Evidencia    CT20_02_lista_de_fabricantes
+    Abrir Portfolio Do Fabricante
+    Registrar Evidencia    CT20_03_portfolio_do_fabricante
+    Abrir Formulario De Pedido
+    Registrar Evidencia    CT20_04_formulario_de_pedido
+    Definir Prazo    ${PRAZO_PEDIDO}
+    Registrar Evidencia    CT20_05_somente_prazo_preenchido
+    Clicar Em Enviar Pedido
+    Verificar Que O Pedido Nao Foi Processado
+    Verificar Campo Obrigatorio Destacado    nome_projeto
+    Registrar Evidencia    CT20_06_campo_obrigatorio_destacado
+    ${depois}=    Contar Todos Os Projetos
+    Should Be Equal As Integers    ${depois}    ${antes}
+    ...    msg=Um pedido foi criado mesmo com campos obrigatórios vazios.
+
+CT21 - Fabricante aceita um pedido de impressão e verifica se o status muda para "Em produção"
+    [Documentation]    Fabricante Carlos (CaCa 3D) aceita o pedido "Star Wand 3D" do cliente João Silva.
+    ...    Esperado: o aceite é confirmado, o cliente é notificado e o status muda para "Em produção".
+    ...    Pré-condição: existe um pedido pendente "Star Wand 3D" do João (criado pelo CT19, que deve
+    ...    rodar antes). Cada execução consome esse pedido.
+    ...    O alerta de aceite é nativo do navegador e não aparece nos prints; o texto é validado.
+    ...    Evidências: resultados/CT21_Evidencias
+
+    [Tags]    pedido    ct21
+
+    Definir Pasta De Evidencias    CT21_Evidencias
+
+    Fazer Login    ${EMAIL_CARLOS}    ${SENHA_CARLOS}
+    Verificar Login Realizado
+    Wait Until Element Is Visible    ${BOTAO_ANALISAR_PEDIDO}    timeout=10s
+    ${id_pedido}=    Obter Id Do Pedido Pendente
+    Registrar Evidencia    CT21_01_pedidos_pendentes
+    Abrir Analise Do Pedido
+    Registrar Evidencia    CT21_02_detalhes_do_pedido
+    Preencher Aceite Do Pedido    ${VALOR_FINAL}    ${PRAZO_PRODUCAO}
+    Registrar Evidencia    CT21_03_aceite_preenchido
+    Aceitar Pedido
+    Verificar Aceite No Painel Do Fabricante    ${id_pedido}
+    Registrar Evidencia    CT21_04_pedido_em_andamento
+    Trocar Para Cliente
+    Verificar Notificacao De Aceite
+    Registrar Evidencia    CT21_05_notificacao_do_cliente
+    Verificar Status Em Producao Para O Cliente    ${id_pedido}
+    Registrar Evidencia    CT21_06_meus_projetos_do_cliente
