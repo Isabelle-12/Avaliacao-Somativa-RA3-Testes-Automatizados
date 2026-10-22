@@ -8,8 +8,6 @@ Test Teardown    Fechar Navegador
 CT17 - Fabricante define o preço por grama de filamento e salva com sucesso
     [Documentation]    Fabricante define o preço por grama de um material e salva.
     ...    Pré-condição: a fabricante Maria possui uma impressora FDM cadastrada (libera o PETG).
-    ...    Observação: o sistema aceita material duplicado, então a verificação compara a
-    ...    quantidade de cards antes e depois de salvar.
     ...    Evidências: resultados/CT17_Evidencias
 
     [Tags]    material    ct17
@@ -71,10 +69,10 @@ CT18 - Fabricante tenta inserir um valor de material igual ou inferior a zero
 
 CT19 - Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso
     [Documentation]    Cliente solicita um pedido de impressão ao fabricante CaCa 3D (Carlos).
-    ...    Esperado (plano): o pedido é registrado e o sistema exibe confirmação com o resumo.
+    ...    Esperado: o pedido é registrado e o sistema exibe confirmação com o resumo.
     ...    Resultado esperado desta automação: FALHA na verificação do resumo (defeito conhecido,
     ...    HU 22 critério 1): o sistema redireciona direto para "Meus Projetos".
-    ...    O teste continua após essa falha para conferir que o pedido foi registrado.
+    ...    O teste continua após a falha para conferir que o pedido foi registrado.
     ...    Evidências: resultados/CT19_Evidencias
 
     [Tags]    pedido    ct19    defeito_conhecido
@@ -109,8 +107,6 @@ CT20 - Cliente tenta confirmar o pedido sem preencher um ou mais campos obrigat�
     [Documentation]    Cliente tenta enviar o pedido ao fabricante CaCa 3D (Carlos) deixando o
     ...    nome do projeto em branco e preenchendo apenas o prazo.
     ...    Esperado: o sistema não processa o pedido, permanece no formulário e destaca o campo vazio.
-    ...    Observação: o destaque visual (contorno) não é avaliado pela automação; o teste verifica
-    ...    que o campo está inválido e com o foco do navegador.
     ...    Evidências: resultados/CT20_Evidencias
 
     [Tags]    pedido    ct20
@@ -141,7 +137,7 @@ CT21 - Fabricante aceita um pedido de impressão e verifica se o status muda par
     [Documentation]    Fabricante Carlos (CaCa 3D) aceita o pedido "Star Wand 3D" do cliente João Silva.
     ...    Esperado: o aceite é confirmado, o cliente é notificado e o status muda para "Em produção".
     ...    Pré-condição: existe um pedido pendente "Star Wand 3D" do João (criado pelo CT19, que deve
-    ...    rodar antes). Cada execução consome esse pedido.
+    ...    rodar antes).
     ...    O alerta de aceite é nativo do navegador e não aparece nos prints; o texto é validado.
     ...    Evidências: resultados/CT21_Evidencias
 
