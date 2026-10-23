@@ -256,8 +256,15 @@ Abrir Analise Do Pedido
 
 Preencher Aceite Do Pedido
     [Arguments]    ${valor}    ${prazo}
+    Wait Until Keyword Succeeds    5x    1s    Preencher E Conferir Aceite    ${valor}    ${prazo}
+
+Preencher E Conferir Aceite
+    [Arguments]    ${valor}    ${prazo}
     Input Text    ${CAMPO_VALOR_FINAL}    ${valor}
     Input Text    ${CAMPO_PRAZO_PRODUCAO}    ${prazo}
+    Sleep    500ms
+    Textfield Value Should Be    ${CAMPO_VALOR_FINAL}    ${valor}
+    Textfield Value Should Be    ${CAMPO_PRAZO_PRODUCAO}    ${prazo}
 
 Obter Id Do Pedido Pendente
     ${onclick}=    Get Element Attribute    ${BOTAO_ANALISAR_PEDIDO}    onclick
