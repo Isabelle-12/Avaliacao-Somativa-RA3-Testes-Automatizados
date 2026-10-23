@@ -16,18 +16,19 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 - **Sistema testado:** Printly, um marketplace web desenvolvido em PHP, MySQL e Bootstrap 5.
 - **Ferramenta:** Robot Framework com SeleniumLibrary.
 - **Requisito mínimo:** 5 casos de teste automatizados por integrante.
+- **Data de entrega:** 27/10/2026.
 
 ---
 
 ## 👥 Equipe
 
-| Integrante | Pasta | Casos automatizados |
+| Integrante | Pasta | Casos automatizados (ID do plano do RA2) |
 |---|---|---|
-| Bruno       | `bruno/`    | COMPLETAR |
-| Gabriela    | `gabriela/` | COMPLETAR |
-| Isabelle    | `isabelle/` | COMPLETAR |
-| Laura       | `laura/`    | COMPLETAR |
-| Pedro       | `pedro/`    | COMPLETAR |
+| Bruno | `bruno/` | CT08, CT16, CT20, CT21, CT23 |
+| Gabriela | `gabriela/` | COMPLETAR |
+| Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 |
+| Laura | `laura/` | COMPLETAR |
+| Pedro | `pedro/` | COMPLETAR |
 
 ---
 
@@ -37,15 +38,25 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 Avaliacao-Somativa-RA3-Testes-Automatizados/
 ├── README.md
 ├── requirements.txt
+├── bruno/
+│   ├── resources.robot         # variáveis e keywords do integrante
+│   ├── testes.robot            # casos de teste do integrante
+│   └── resultados/
+├── gabriela/                   # mesma estrutura
 ├── isabelle/
-│   ├── resources.robot     # variáveis e keywords do integrante
-│   ├── testes.robot        # casos de teste do integrante
-│   └── resultados/         # report.html, log.html, output.xml e prints
-├── [integrante2]/
 │   ├── resources.robot
 │   ├── testes.robot
 │   └── resultados/
-└── ...
+│       ├── report.html
+│       ├── log.html
+│       ├── output.xml
+│       ├── CT17_Evidencias/    # prints numerados por passo
+│       ├── CT18_Evidencias/
+│       ├── CT19_Evidencias/
+│       ├── CT20_Evidencias/
+│       └── CT21_Evidencias/
+├── laura/                      # mesma estrutura
+└── pedro/                      # mesma estrutura
 ```
 
 Cada integrante tem uma **pasta independente e autocontida**. Regra do grupo: **cada pessoa altera apenas a própria pasta**. Isso evita conflitos de merge e garante que o trabalho de um integrante não afete o de outro.
@@ -84,14 +95,22 @@ Os testes só funcionam com o sistema no ar.
 2. Coloque o projeto Printly em: `COMPLETAR (ex.: pasta htdocs do XAMPP)`
 3. Importe o banco de dados: `COMPLETAR (nome do banco e arquivo .sql)`
 4. Importe os dados de teste: `COMPLETAR (script SQL com os usuários e registros usados nos testes)`
-5. Acesse no navegador: `COMPLETAR (URL, ex.: http://localhost/printly/)`
+5. Acesse no navegador: `http://localhost/Printly/public/`
 
-**Usuários de teste** (apenas dados fictícios):
+**Usuários de teste** (apenas dados fictícios; todos com a senha `123456`):
 
-| Perfil | Usuário/E-mail | Senha |
+| Perfil | Nome | E-mail |
 |---|---|---|
-| Cliente | COMPLETAR | COMPLETAR |
-| Maker | COMPLETAR | COMPLETAR |
+| Cliente | João Silva | `joao@email.com` |
+| Maker | Maria Souza | `maria@email.com` |
+| Maker (CaCa 3D) | Carlos Pereira | `carlos@email.com` |
+| Maker | Bruno Maker Teste | `bruno.maker@teste.com` |
+| Admin | Ana Martins | `ana.admin@email.com` |
+
+**Dados que os testes da Isabelle pressupõem:**
+- A maker **Maria** tem uma impressora FDM cadastrada (isso libera o material PETG no formulário).
+- A maker **Carlos** (fabricante "CaCa 3D") tem materiais cadastrados (PETG, PLA e ABS).
+- O cliente **João** é quem faz os pedidos.
 
 > Se a porta 80 estiver ocupada, altere a porta do Apache no XAMPP e informe a nova URL
 > na hora de executar os testes (veja a próxima seção).
@@ -108,26 +127,12 @@ Todos os comandos são executados **a partir da raiz do repositório**.
 py -m robot --outputdir isabelle/resultados isabelle/testes.robot
 ```
 
-Para executar especificamente os testes do Bruno no Windows, também é possível
-usar o arquivo `bruno\executar_testes.bat`. Os relatórios, logs, XML e capturas
-serão gerados automaticamente em `bruno\resultados`:
-
-```bat
-bruno\executar_testes.bat
-```
-
-**Executar apenas uma tag** (por exemplo, `login`):
+**Executar apenas um caso ou grupo, por tag** (por exemplo, o CT17 ou todos os de pedido):
 
 ```bash
-py -m robot --outputdir isabelle/resultados -i login isabelle/testes.robot
+py -m robot --outputdir isabelle/resultados -i ct17 isabelle/testes.robot
+py -m robot --outputdir isabelle/resultados -i pedido isabelle/testes.robot
 ```
-
-**Executar com outra URL** (por exemplo, outra porta do XAMPP):
-
-```bash
-py -m robot --outputdir isabelle/resultados -v URL:http://localhost:8080/printly/ isabelle/testes.robot
-```
-
 ---
 
 ## 📊 Resultados
@@ -139,7 +144,7 @@ Após cada execução, a pasta `resultados/` do integrante contém:
 | `report.html` | Relatório resumido (aprovados, reprovados, tempo) |
 | `log.html` | Log detalhado, passo a passo, com os prints de cada teste |
 | `output.xml` | Saída em XML (usada para gerar os relatórios) |
-| `selenium-screenshot-*.png` | Capturas de tela ao final de cada teste |
+| `CTxx_Evidencias/` | Prints numerados dos passos importantes de cada caso (ex.: `CT17_03_formulario_aberto.png`) e o print final do teste |
 
 Para visualizar, abra o `report.html` ou o `log.html` no navegador.
 
@@ -151,7 +156,19 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 
 | ID (RA2) | Funcionalidade | Responsável | Tag | Resultado |
 |---|---|---|---|---|
-| COMPLETAR | COMPLETAR | COMPLETAR | COMPLETAR | COMPLETAR |
+| CT08 | Recusar cadastro de fabricante com informações ou fotos fora dos requisitos | Bruno | COMPLETAR | COMPLETAR |
+| CT16 | Fabricante responde a um feedback e a resposta é publicada vinculada ao comentário original | Bruno | COMPLETAR | COMPLETAR |
+| CT17 | Fabricante define o preço por grama de filamento e salva com sucesso (C9) | Isabelle | `ct17`, `material` | ✅ Passou |
+| CT18 | Fabricante tenta inserir valor de material igual ou inferior a zero (C9) | Isabelle | `ct18`, `material` | ✅ Passou |
+| CT19 | Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso (C10) | Isabelle | `ct19`, `pedido`, `defeito_conhecido` | ❌ Falha esperada (defeito da HU 22) |
+| CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Isabelle | `ct20`, `pedido` | ✅ Passou |
+| CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Bruno | COMPLETAR | COMPLETAR |
+| CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Isabelle | `ct21`, `pedido` | ✅ Passou |
+| CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Bruno | COMPLETAR | COMPLETAR |
+| CT23 | Fabricante altera o status do pedido para "Em produção" e o cliente é notificado (C12) | Bruno | COMPLETAR | COMPLETAR |
+| COMPLETAR | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
+| COMPLETAR | COMPLETAR | Laura | COMPLETAR | COMPLETAR |
+| COMPLETAR | COMPLETAR | Pedro | COMPLETAR | COMPLETAR |
 
 ---
 
@@ -159,7 +176,8 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 
 - **Pastas:** primeiro nome do integrante, em minúsculas e sem acento.
 - **Nome dos testes:** `CTxx - Descrição do caso`, mantendo o ID do plano do RA2.
-- **Tags:** uma por funcionalidade (ex.: `login`, `pedido`, `portfolio`).
+- **Tags:** uma por funcionalidade (ex.: `login`, `pedido`, `material`) e uma por caso (ex.: `ct17`).
+- **Evidências:** uma pasta `CTxx_Evidencias` por caso, com prints numerados na ordem dos passos (`CTxx_01_descricao.png`).
 - **Commits:** mensagens curtas, no imperativo, em português (ex.: `Adiciona testes de login`).
 - **Fluxo no Git:** `pull` antes de começar e `push` ao terminar, alterando só a própria pasta.
 
@@ -167,8 +185,25 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 
 ## ⚠️ Limitações e observações
 
-- Aspectos visuais e de usabilidade não são avaliados pela automação e continuam
-  dependendo de testes manuais.
+**Achados dos testes (Isabelle):**
+- **CT19, defeito conhecido (HU 22, critério de aceite 1):** depois de enviar o pedido, o Printly redireciona direto
+  para "Meus Projetos", sem exibir a confirmação com o resumo do pedido. O teste registra a falha de propósito e,
+  em seguida, confere que o pedido foi criado.
+- **CT17, observação:** o Printly permite cadastrar o mesmo material mais de uma vez, com os mesmos dados, sem aviso.
+  Por isso o teste confere o resultado contando os cards antes e depois de salvar.
+- **CT19, divergência com o plano:** o plano indica "sem partes personalizadas", mas o formulário exige ao menos uma
+  parte; o teste adiciona uma.
+
+**Limitações da automação:**
+- Aspectos visuais e de usabilidade não são avaliados pela automação e continuam dependendo de testes manuais
+  (por exemplo, o contorno azul do campo vazio no CT20: o teste confere que o campo está inválido e com o foco).
+- Alertas nativos do navegador (CT18 e CT21) não aparecem nos prints; o teste valida o texto deles e o registra no `log.html`.
+
+**Dados criados pelos testes:**
+- O CT17 cadastra um PETG novo a cada execução.
+- O CT19 cria um pedido novo a cada execução, e o CT21 o consome ao aceitá-lo.
+
+**Outros:**
 - Os testes dependem do Printly rodando localmente e dos dados de teste importados.
 - `COMPLETAR`: casos do plano do RA2 que não foram automatizados e o motivo.
 
@@ -176,7 +211,7 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 
 ## 📦 Entrega
 
-`COMPLETAR` (formato e contéudo do zip, após confirmação com o professor).
+`COMPLETAR` (formato e conteúdo do zip, após confirmação com o professor).
 
 ---
 
