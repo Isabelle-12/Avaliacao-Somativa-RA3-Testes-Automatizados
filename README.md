@@ -25,7 +25,7 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 | Integrante | Pasta | Casos automatizados (ID do plano do RA2) |
 |---|---|---|
 | Bruno | `bruno/` | CT08, CT16, CT20, CT21, CT23 |
-| Gabriela | `gabriela/` | COMPLETAR |
+| Gabriela | `gabriela/` | CT9 , CT10 , CT11 , CT12 , CT15 |
 | Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 |
 | Laura | `laura/` | COMPLETAR |
 | Pedro | `pedro/` | COMPLETAR |
