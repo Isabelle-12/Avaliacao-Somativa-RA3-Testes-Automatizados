@@ -1,0 +1,2120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.14.2 on win32)" generated="2026-10-27T20:49:54.328270" rpa="false" schemaversion="5">
+<suite id="s1" name="Testes" source="C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\testes.robot">
+<test id="s1-t1" name="CT25 - Cliente verifica o histórico de atualizações do pedido em ordem cronológica" line="9">
+<kw name="Abrir Navegador" owner="resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:54.640586" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:49:54.640346" elapsed="0.851412"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.492003" elapsed="0.021464"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${OUTPUT DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.513697" elapsed="0.000420"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:49:54.639461" elapsed="0.874756"/>
+</kw>
+<kw name="Definir Pasta De Evidencias" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:49:55.515206" level="INFO">${caminho} = C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT25_Evidencias</msg>
+<var>${caminho}</var>
+<arg>${OUTPUT DIR}${/}${pasta}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.514896" elapsed="0.000343"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-10-27T20:49:55.516066" level="INFO" html="true">Created directory '&lt;a href="file://C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT25_Evidencias"&gt;C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT25_Evidencias&lt;/a&gt;'.</msg>
+<arg>${caminho}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.515329" elapsed="0.000832"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${caminho}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.516298" elapsed="0.000405"/>
+</kw>
+<arg>CT25_Evidencias</arg>
+<status status="PASS" start="2026-10-27T20:49:55.514595" elapsed="0.002210"/>
+</kw>
+<kw name="Fazer Login" owner="resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.517421" level="INFO">Opening url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.517331" elapsed="0.026975"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.544612" elapsed="0.015801"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.560941" level="INFO">Typing text 'joao@email.com' into text field 'id:email'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.560649" elapsed="0.046620"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.607958" level="INFO">Typing text '123456' into text field 'id:senha'.</msg>
+<arg>${LOGIN_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.607569" elapsed="0.042788"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.650824" level="INFO">Clicking element 'id:entrar'.</msg>
+<arg>${LOGIN_BOTAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.650576" elapsed="0.033570"/>
+</kw>
+<arg>${EMAIL_CLIENTE}</arg>
+<arg>${SENHA_CLIENTE}</arg>
+<status status="PASS" start="2026-10-27T20:49:55.517062" elapsed="0.167200"/>
+</kw>
+<kw name="Verificar Login Realizado" owner="resources">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.684901" elapsed="0.212604"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=usuario-painel</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.897658" elapsed="0.002658"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:49:55.684551" elapsed="0.215952"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.985411" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT25_Evidencias/CT25_01_login_realizado.png"&gt;&lt;img src="CT25_Evidencias/CT25_01_login_realizado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.901198" elapsed="0.084323"/>
+</kw>
+<arg>CT25_01_login_realizado</arg>
+<status status="PASS" start="2026-10-27T20:49:55.900861" elapsed="0.084749"/>
+</kw>
+<kw name="Acessar Meus Projetos" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.986114" elapsed="0.010407"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:55.996966" level="INFO">Clicking element 'css:a.nav-link[href*='meus_projetos']'.</msg>
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:55.996740" elapsed="0.119017"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=meus_projetos</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.115993" elapsed="0.002846"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CARD_PROJETO}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.119025" elapsed="0.007640"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:49:55.985888" elapsed="0.140941"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:56.297779" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT25_Evidencias/CT25_02_meus_projetos.png"&gt;&lt;img src="CT25_Evidencias/CT25_02_meus_projetos.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.127560" elapsed="0.170331"/>
+</kw>
+<arg>CT25_02_meus_projetos</arg>
+<status status="PASS" start="2026-10-27T20:49:56.127197" elapsed="0.170789"/>
+</kw>
+<kw name="Abrir Detalhes Do Projeto" owner="resources">
+<kw name="Localizar Card Do Projeto" owner="resources">
+<kw name="Montar Locator Do Card" owner="resources">
+<return>
+<value>xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='${nome}']])[1]</value>
+<status status="PASS" start="2026-10-27T20:49:56.299341" elapsed="0.000071"/>
+</return>
+<msg time="2026-10-27T20:49:56.299549" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Carrinho de Brinquedo']])[1]</msg>
+<var>${card}</var>
+<arg>${nome}</arg>
+<doc>Retorna o xpath do (primeiro) card de projeto com o nome informado.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.299167" elapsed="0.000406"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${card}</arg>
+<arg>timeout=10s</arg>
+<arg>error=O projeto "${nome}" não foi encontrado em "Meus Projetos" do cliente.</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.299699" elapsed="0.007111"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:56.311705" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.58")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.307307" elapsed="0.004444"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:56.312208" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.58")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.311982" elapsed="0.003885"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:49:56.816712" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.316064" elapsed="0.500767"/>
+</kw>
+<arg>${card}</arg>
+<status status="PASS" start="2026-10-27T20:49:56.307034" elapsed="0.509896"/>
+</kw>
+<return>
+<value>${card}</value>
+<status status="PASS" start="2026-10-27T20:49:56.816985" elapsed="0.000065"/>
+</return>
+<msg time="2026-10-27T20:49:56.817189" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Carrinho de Brinquedo']])[1]</msg>
+<var>${card}</var>
+<arg>${nome}</arg>
+<status status="PASS" start="2026-10-27T20:49:56.298860" elapsed="0.518352"/>
+</kw>
+<kw name="Clicar Via JS" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.817575" elapsed="0.008122"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:56.828611" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.62")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.825850" elapsed="0.002793"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:56.828911" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'}); arguments[0].click();
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.62")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'}); arguments[0].click();</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.828781" elapsed="0.004984"/>
+</kw>
+<arg>${card}//button[contains(@class,'btn-ver')]</arg>
+<doc>Rola o elemento até o centro da tela e clica via JavaScript.
+Evita o erro "element click intercepted" em botões que ficam atrás de outros elementos.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.817373" elapsed="0.016508"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_DETALHES}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:49:56.834027" elapsed="0.218247"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath://div[@id='conteudoModalProjeto']//h6[contains(.,'Histórico de Atualizações')]</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:49:57.052473" elapsed="0.006408"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.059951" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:49:57.059130" elapsed="1.000946"/>
+</kw>
+<arg>${PROJETO_CT25}</arg>
+<status status="PASS" start="2026-10-27T20:49:56.298351" elapsed="1.761817"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.106920" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT25_Evidencias/CT25_03_detalhes_do_projeto.png"&gt;&lt;img src="CT25_Evidencias/CT25_03_detalhes_do_projeto.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.060801" elapsed="0.046211"/>
+</kw>
+<arg>CT25_03_detalhes_do_projeto</arg>
+<status status="PASS" start="2026-10-27T20:49:58.060485" elapsed="0.046599"/>
+</kw>
+<kw name="Rolar Ate O Historico" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.107875" level="INFO">${titulo} = xpath://div[@id='conteudoModalProjeto']//h6[contains(normalize-space(.),'Histórico de Atualizações')]</msg>
+<var>${titulo}</var>
+<arg>xpath://div[@id='conteudoModalProjeto']//h6[contains(normalize-space(.),'Histórico de Atualizações')]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.107647" elapsed="0.000249"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.113654" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.65")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.108147" elapsed="0.005540"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.113971" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="7fc2cbf7e4d9755f22a196a5a8044b7d", element="f.503F978F58BECF66CDDFA3EDD6D370AF.d.7CB6D91E018BEEE14EC44BC4543226BC.e.65")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.113836" elapsed="0.002655"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.617349" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.116655" elapsed="0.500810"/>
+</kw>
+<arg>${titulo}</arg>
+<status status="PASS" start="2026-10-27T20:49:58.107993" elapsed="0.509564"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:49:58.107434" elapsed="0.510169"/>
+</kw>
+<kw name="Verificar Historico Em Ordem Cronologica" owner="resources">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.623074" level="INFO">${qtd} = 3</msg>
+<var>${qtd}</var>
+<arg>${ITEM_HISTORICO}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.618155" elapsed="0.004950"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${qtd} &gt; 0</arg>
+<arg>msg=O projeto não possui etapas no "Histórico de Atualizações".</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.623342" elapsed="0.000361"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.623971" level="INFO">${datas} = []</msg>
+<var>${datas}</var>
+<doc>Creates and returns a list containing the given items.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.623811" elapsed="0.000177"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.624438" level="INFO">${item} = css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(1)</msg>
+<var>${item}</var>
+<arg>css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(${i})</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.624271" elapsed="0.000183"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.636032" level="INFO">${descricao} = Em análise</msg>
+<var>${descricao}</var>
+<arg>${item} .tr-label</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.624521" elapsed="0.011580"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.644853" level="INFO">${data_hora} = 27/10/2026, 20:22:05</msg>
+<var>${data_hora}</var>
+<arg>${item} .tr-data</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.636315" elapsed="0.008601"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.645588" level="INFO">Length is 10.</msg>
+<arg>${descricao}</arg>
+<arg>msg=A etapa ${i} do histórico está sem descrição.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.645091" elapsed="0.000545"/>
+</kw>
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${data_hora}</arg>
+<arg>\\d{2}/\\d{2}/\\d{4},?\\s+\\d{2}:\\d{2}</arg>
+<arg>msg=A etapa ${i} ("${descricao}") não exibe data e hora no formato esperado: "${data_hora}".</arg>
+<doc>Fails if the `string` does not match the regular expression `pattern`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.645790" elapsed="0.000423"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.646606" level="INFO">Etapa 1: Em análise - 27/10/2026, 20:22:05</msg>
+<arg>Etapa ${i}: ${descricao} - ${data_hora}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.646373" elapsed="0.000267"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.651346" level="INFO">${dt} = 2026-10-27 20:22:00</msg>
+<var>${dt}</var>
+<arg>datetime.datetime.strptime(' '.join(re.search(r'(\\d{2}/\\d{2}/\\d{4})\\D+(\\d{2}:\\d{2})', $data_hora).groups()), '%d/%m/%Y %H:%M')</arg>
+<arg>modules=datetime,re</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.646732" elapsed="0.004647"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${datas}</arg>
+<arg>${dt}</arg>
+<doc>Adds `values` to the end of `list`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.651507" elapsed="0.000175"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-10-27T20:49:58.624196" elapsed="0.027528"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.652189" level="INFO">${item} = css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(2)</msg>
+<var>${item}</var>
+<arg>css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(${i})</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.651960" elapsed="0.000251"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.660264" level="INFO">${descricao} = Concluído</msg>
+<var>${descricao}</var>
+<arg>${item} .tr-label</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.652276" elapsed="0.008024"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.668647" level="INFO">${data_hora} = 27/10/2026, 20:27:35</msg>
+<var>${data_hora}</var>
+<arg>${item} .tr-data</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.660433" elapsed="0.008257"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.669168" level="INFO">Length is 9.</msg>
+<arg>${descricao}</arg>
+<arg>msg=A etapa ${i} do histórico está sem descrição.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.668849" elapsed="0.000351"/>
+</kw>
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${data_hora}</arg>
+<arg>\\d{2}/\\d{2}/\\d{4},?\\s+\\d{2}:\\d{2}</arg>
+<arg>msg=A etapa ${i} ("${descricao}") não exibe data e hora no formato esperado: "${data_hora}".</arg>
+<doc>Fails if the `string` does not match the regular expression `pattern`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.669311" elapsed="0.000210"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.669760" level="INFO">Etapa 2: Concluído - 27/10/2026, 20:27:35</msg>
+<arg>Etapa ${i}: ${descricao} - ${data_hora}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.669627" elapsed="0.000157"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.670177" level="INFO">${dt} = 2026-10-27 20:27:00</msg>
+<var>${dt}</var>
+<arg>datetime.datetime.strptime(' '.join(re.search(r'(\\d{2}/\\d{2}/\\d{4})\\D+(\\d{2}:\\d{2})', $data_hora).groups()), '%d/%m/%Y %H:%M')</arg>
+<arg>modules=datetime,re</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.669858" elapsed="0.000336"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${datas}</arg>
+<arg>${dt}</arg>
+<doc>Adds `values` to the end of `list`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.670281" elapsed="0.000129"/>
+</kw>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-10-27T20:49:58.651868" elapsed="0.018582"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.670823" level="INFO">${item} = css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(3)</msg>
+<var>${item}</var>
+<arg>css:#conteudoModalProjeto .timeline-real .tr-item:nth-child(${i})</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.670667" elapsed="0.000171"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.679550" level="INFO">${descricao} = Aguardando</msg>
+<var>${descricao}</var>
+<arg>${item} .tr-label</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.670916" elapsed="0.008670"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.687424" level="INFO">${data_hora} = 27/10/2026, 20:27:42</msg>
+<var>${data_hora}</var>
+<arg>${item} .tr-data</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.679724" elapsed="0.007736"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.687881" level="INFO">Length is 10.</msg>
+<arg>${descricao}</arg>
+<arg>msg=A etapa ${i} do histórico está sem descrição.</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.687596" elapsed="0.000317"/>
+</kw>
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${data_hora}</arg>
+<arg>\\d{2}/\\d{2}/\\d{4},?\\s+\\d{2}:\\d{2}</arg>
+<arg>msg=A etapa ${i} ("${descricao}") não exibe data e hora no formato esperado: "${data_hora}".</arg>
+<doc>Fails if the `string` does not match the regular expression `pattern`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.688025" elapsed="0.000225"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.688493" level="INFO">Etapa 3: Aguardando - 27/10/2026, 20:27:42</msg>
+<arg>Etapa ${i}: ${descricao} - ${data_hora}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.688362" elapsed="0.000155"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.688898" level="INFO">${dt} = 2026-10-27 20:27:00</msg>
+<var>${dt}</var>
+<arg>datetime.datetime.strptime(' '.join(re.search(r'(\\d{2}/\\d{2}/\\d{4})\\D+(\\d{2}:\\d{2})', $data_hora).groups()), '%d/%m/%Y %H:%M')</arg>
+<arg>modules=datetime,re</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.688593" elapsed="0.000322"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${datas}</arg>
+<arg>${dt}</arg>
+<doc>Adds `values` to the end of `list`.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.689017" elapsed="0.000132"/>
+</kw>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-10-27T20:49:58.670583" elapsed="0.018609"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>${qtd} + 1</value>
+<status status="PASS" start="2026-10-27T20:49:58.624035" elapsed="0.065205"/>
+</for>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-27T20:49:58.689655" level="INFO">${ordenado} = True</msg>
+<var>${ordenado}</var>
+<arg>$datas == sorted($datas)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.689387" elapsed="0.000286"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${ordenado}</arg>
+<arg>msg=O histórico não está em ordem cronológica: ${datas}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.689751" elapsed="0.000164"/>
+</kw>
+<doc>Lê cada etapa do "Histórico de Atualizações" e confere que todas têm
+descrição (nome da etapa), data e hora, e que estão em ordem cronológica (mais antiga primeiro).</doc>
+<status status="PASS" start="2026-10-27T20:49:58.617938" elapsed="0.072019"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.740060" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT25_Evidencias/CT25_04_historico_de_atualizacoes.png"&gt;&lt;img src="CT25_Evidencias/CT25_04_historico_de_atualizacoes.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.690513" elapsed="0.049658"/>
+</kw>
+<arg>CT25_04_historico_de_atualizacoes</arg>
+<status status="PASS" start="2026-10-27T20:49:58.690208" elapsed="0.050063"/>
+</kw>
+<kw name="Fechar Navegador" owner="resources" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:49:58.797641" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT25_Evidencias/tela_final_1.png"&gt;&lt;img src="CT25_Evidencias/tela_final_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>tela_final_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.741345" elapsed="0.056408"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>tela_final_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible errorw.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.740950" elapsed="0.056885"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-27T20:49:58.798018" elapsed="2.178067"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:49:58.740655" elapsed="2.235547"/>
+</kw>
+<doc>Cliente abre os detalhes do projeto "Carrinho de Brinquedo" em "Meus Projetos".
+Esperado: o "Histórico de Atualizações" é exibido em ordem cronológica, com data, hora
+e descrição de cada etapa.
+Pré-condição: o cliente João possui o projeto "Carrinho de Brinquedo" com histórico registrado.
+Evidências: resultados/CT25_Evidencias</doc>
+<tag>ct25</tag>
+<tag>historico</tag>
+<tag>projetos</tag>
+<status status="PASS" start="2026-10-27T20:49:54.638637" elapsed="6.337859"/>
+</test>
+<test id="s1-t2" name="CT27 - Cliente verifica nome, data de envio, status e miniatura na lista de &quot;Meus Projetos&quot;" line="31">
+<kw name="Abrir Navegador" owner="resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:00.978194" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:00.977996" elapsed="0.728583"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.706817" elapsed="0.035174"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${OUTPUT DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.742188" elapsed="0.000363"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:00.977615" elapsed="0.765026"/>
+</kw>
+<kw name="Definir Pasta De Evidencias" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:50:01.743779" level="INFO">${caminho} = C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT27_Evidencias</msg>
+<var>${caminho}</var>
+<arg>${OUTPUT DIR}${/}${pasta}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.743322" elapsed="0.000492"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-10-27T20:50:01.744968" level="INFO" html="true">Created directory '&lt;a href="file://C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT27_Evidencias"&gt;C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT27_Evidencias&lt;/a&gt;'.</msg>
+<arg>${caminho}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.743985" elapsed="0.001123"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${caminho}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.745301" elapsed="0.000475"/>
+</kw>
+<arg>CT27_Evidencias</arg>
+<status status="PASS" start="2026-10-27T20:50:01.742951" elapsed="0.002923"/>
+</kw>
+<kw name="Fazer Login" owner="resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:01.746535" level="INFO">Opening url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.746443" elapsed="0.029381"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.776029" elapsed="0.013809"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:01.790438" level="INFO">Typing text 'joao@email.com' into text field 'id:email'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.790087" elapsed="0.057466"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:01.848242" level="INFO">Typing text '123456' into text field 'id:senha'.</msg>
+<arg>${LOGIN_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.847802" elapsed="0.050016"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:01.898338" level="INFO">Clicking element 'id:entrar'.</msg>
+<arg>${LOGIN_BOTAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.898055" elapsed="0.037002"/>
+</kw>
+<arg>${EMAIL_CLIENTE}</arg>
+<arg>${SENHA_CLIENTE}</arg>
+<status status="PASS" start="2026-10-27T20:50:01.746167" elapsed="0.189040"/>
+</kw>
+<kw name="Verificar Login Realizado" owner="resources">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:01.935951" elapsed="0.330505"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=usuario-painel</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.266644" elapsed="0.002838"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:01.935602" elapsed="0.333978"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:02.344809" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT27_Evidencias/CT27_01_login_realizado.png"&gt;&lt;img src="CT27_Evidencias/CT27_01_login_realizado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.270470" elapsed="0.074519"/>
+</kw>
+<arg>CT27_01_login_realizado</arg>
+<status status="PASS" start="2026-10-27T20:50:02.269886" elapsed="0.075228"/>
+</kw>
+<kw name="Acessar Meus Projetos" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.345718" elapsed="0.010469"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:02.356648" level="INFO">Clicking element 'css:a.nav-link[href*='meus_projetos']'.</msg>
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.356404" elapsed="0.094148"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=meus_projetos</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.450732" elapsed="0.013058"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CARD_PROJETO}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.463985" elapsed="0.005730"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:02.345452" elapsed="0.124375"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:02.641848" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT27_Evidencias/CT27_02_meus_projetos.png"&gt;&lt;img src="CT27_Evidencias/CT27_02_meus_projetos.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.470480" elapsed="0.171475"/>
+</kw>
+<arg>CT27_02_meus_projetos</arg>
+<status status="PASS" start="2026-10-27T20:50:02.470150" elapsed="0.171902"/>
+</kw>
+<kw name="Localizar Card Do Projeto" owner="resources">
+<kw name="Montar Locator Do Card" owner="resources">
+<return>
+<value>xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='${nome}']])[1]</value>
+<status status="PASS" start="2026-10-27T20:50:02.642880" elapsed="0.000044"/>
+</return>
+<msg time="2026-10-27T20:50:02.643050" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]</msg>
+<var>${card}</var>
+<arg>${nome}</arg>
+<doc>Retorna o xpath do (primeiro) card de projeto com o nome informado.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.642721" elapsed="0.000353"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${card}</arg>
+<arg>timeout=10s</arg>
+<arg>error=O projeto "${nome}" não foi encontrado em "Meus Projetos" do cliente.</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.643192" elapsed="0.006575"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:02.654796" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="e8dcd20ac1ee319e2778c1474edd31dc", element="f.680D9E803BD22898FD12094D760C6484.d.8F56A2C07F3C40E576E7DE3C1C3E2296.e.57")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.650443" elapsed="0.004407"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:02.655408" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="e8dcd20ac1ee319e2778c1474edd31dc", element="f.680D9E803BD22898FD12094D760C6484.d.8F56A2C07F3C40E576E7DE3C1C3E2296.e.57")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.655108" elapsed="0.004106"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:03.160275" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:02.659420" elapsed="0.501035"/>
+</kw>
+<arg>${card}</arg>
+<status status="PASS" start="2026-10-27T20:50:02.650072" elapsed="0.510502"/>
+</kw>
+<return>
+<value>${card}</value>
+<status status="PASS" start="2026-10-27T20:50:03.160639" elapsed="0.000063"/>
+</return>
+<msg time="2026-10-27T20:50:03.160871" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]</msg>
+<var>${card}</var>
+<arg>${PROJETO_CT27}</arg>
+<status status="PASS" start="2026-10-27T20:50:02.642393" elapsed="0.518509"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.251986" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT27_Evidencias/CT27_03_card_do_projeto.png"&gt;&lt;img src="CT27_Evidencias/CT27_03_card_do_projeto.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.161582" elapsed="0.090495"/>
+</kw>
+<arg>CT27_03_card_do_projeto</arg>
+<status status="PASS" start="2026-10-27T20:50:03.161247" elapsed="0.090904"/>
+</kw>
+<kw name="Verificar Dados Do Card Do Projeto" owner="resources">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.252932" level="INFO">Verifying element 'xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]//h5[contains(@class,'card-titulo')]' contains exact text 'Porta canetas'.</msg>
+<arg>${card}//h5[contains(@class,'card-titulo')]</arg>
+<arg>${nome}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.252767" elapsed="0.009567"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.272312" level="INFO">Element 'xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]//div[contains(@class,'info-item')][contains(.,'Enviado')]' contains text '27/10/2026'.</msg>
+<arg>${card}//div[contains(@class,'info-item')][contains(.,'Enviado')]</arg>
+<arg>${data_envio}</arg>
+<arg>message=A data de envio do projeto "${nome}" deveria ser ${data_envio}.</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.262484" elapsed="0.009930"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.281102" level="INFO">Element 'xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]//span[contains(@class,'badge-status')]' contains text 'Concluído'.</msg>
+<arg>${card}//span[contains(@class,'badge-status')]</arg>
+<arg>${status}</arg>
+<arg>message=O status do projeto "${nome}" deveria ser "${status}".</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.272578" elapsed="0.008619"/>
+</kw>
+<arg>${card}</arg>
+<arg>${PROJETO_CT27}</arg>
+<arg>${DATA_ENVIO_CT27}</arg>
+<arg>${STATUS_CT27}</arg>
+<status status="PASS" start="2026-10-27T20:50:03.252497" elapsed="0.028792"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<kw name="Verificar Miniatura Do Projeto" owner="resources">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.382098" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT27_Evidencias/selenium-screenshot-1.png"&gt;&lt;img src="CT27_Evidencias/selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-10-27T20:50:03.382319" level="FAIL">Page should have contained element 'xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]//div[contains(@class,'card-capa')]//img' but did not.</msg>
+<arg>${card}//div[contains(@class,'card-capa')]//img</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="FAIL" start="2026-10-27T20:50:03.282417" elapsed="0.101877">Page should have contained element 'xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Porta canetas']])[1]//div[contains(@class,'card-capa')]//img' but did not.</status>
+</kw>
+<msg time="2026-10-27T20:50:03.384457" level="INFO">${tem_img} = False</msg>
+<var>${tem_img}</var>
+<arg>Page Should Contain Element</arg>
+<arg>${card}//div[contains(@class,'card-capa')]//img</arg>
+<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.282182" elapsed="0.102303"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2026-10-27T20:50:03.385017" level="FAIL">Defeito: o projeto "Porta canetas" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</msg>
+<arg>${tem_img}</arg>
+<arg>msg=Defeito: o projeto "${nome}" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2026-10-27T20:50:03.384637" elapsed="0.000457">Defeito: o projeto "Porta canetas" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</status>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<var>${el}</var>
+<arg>${card}//div[contains(@class,'card-capa')]//img</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2026-10-27T20:50:03.385224" elapsed="0.000025"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<var>${carregou}</var>
+<arg>return arguments[0].complete &amp;&amp; arguments[0].naturalWidth &gt; 0;</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" start="2026-10-27T20:50:03.385351" elapsed="0.000019"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${carregou}</arg>
+<arg>msg=A miniatura do projeto "${nome}" não carregou.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-10-27T20:50:03.385460" elapsed="0.000017"/>
+</kw>
+<arg>${card}</arg>
+<arg>${PROJETO_CT27}</arg>
+<doc>A miniatura é uma &lt;img&gt; dentro de ".card-capa". Quando o projeto não tem imagem,
+o Printly não cria a &lt;img&gt; e mostra apenas o ícone de pasta (classe "sem-capa").</doc>
+<status status="FAIL" start="2026-10-27T20:50:03.281898" elapsed="0.103673">Defeito: o projeto "Porta canetas" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</status>
+</kw>
+<arg>Verificar Miniatura Do Projeto</arg>
+<arg>${card}</arg>
+<arg>${PROJETO_CT27}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="FAIL" start="2026-10-27T20:50:03.281536" elapsed="0.104134">Defeito: o projeto "Porta canetas" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</status>
+</kw>
+<kw name="Fechar Navegador" owner="resources" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:03.481187" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT27_Evidencias/tela_final_1.png"&gt;&lt;img src="CT27_Evidencias/tela_final_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>tela_final_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.386400" elapsed="0.094897"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>tela_final_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible errorw.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.386182" elapsed="0.095253"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-27T20:50:03.481623" elapsed="2.138306"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:03.385998" elapsed="2.234060"/>
+</kw>
+<doc>Cliente confere, na lista de "Meus Projetos", o card do projeto "Porta Canetas":
+nome "Porta Canetas", data de envio 20/09/2026, status "Concluído" e miniatura.
+Resultado desta automação: FALHA esperada (defeito conhecido): o nome, a data e o status são
+exibidos corretamente, mas a miniatura do projeto não aparece (só o ícone de pasta).
+O teste registra a falha de propósito e segue conferindo os demais dados.
+Pré-condição: o cliente João possui o projeto "Porta Canetas", concluído, enviado em 20/09/2026.
+Evidências: resultados/CT27_Evidencias</doc>
+<tag>ct27</tag>
+<tag>defeito_conhecido</tag>
+<tag>projetos</tag>
+<status status="FAIL" start="2026-10-27T20:50:00.977057" elapsed="4.643149">Defeito: o projeto "Porta canetas" não exibe miniatura na listagem de "Meus Projetos" (aparece apenas o ícone de pasta).</status>
+</test>
+<test id="s1-t3" name="CT29 - Cliente filtra fabricantes por localização e vê apenas os da região informada" line="56">
+<kw name="Abrir Navegador" owner="resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:05.621739" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:05.621550" elapsed="1.256323"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.878109" elapsed="0.022291"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${OUTPUT DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.900787" elapsed="0.000540"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:05.621176" elapsed="1.280234"/>
+</kw>
+<kw name="Definir Pasta De Evidencias" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:50:06.902423" level="INFO">${caminho} = C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT29_Evidencias</msg>
+<var>${caminho}</var>
+<arg>${OUTPUT DIR}${/}${pasta}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.902072" elapsed="0.000383"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-10-27T20:50:06.903483" level="INFO" html="true">Created directory '&lt;a href="file://C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT29_Evidencias"&gt;C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT29_Evidencias&lt;/a&gt;'.</msg>
+<arg>${caminho}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.902591" elapsed="0.000984"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${caminho}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.903750" elapsed="0.000490"/>
+</kw>
+<arg>CT29_Evidencias</arg>
+<status status="PASS" start="2026-10-27T20:50:06.901732" elapsed="0.002610"/>
+</kw>
+<kw name="Fazer Login" owner="resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:06.905063" level="INFO">Opening url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.904963" elapsed="0.026807"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.931960" elapsed="0.010652"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:06.943219" level="INFO">Typing text 'joao@email.com' into text field 'id:email'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.942886" elapsed="0.044118"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:06.987596" level="INFO">Typing text '123456' into text field 'id:senha'.</msg>
+<arg>${LOGIN_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:06.987213" elapsed="0.037309"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.025015" level="INFO">Clicking element 'id:entrar'.</msg>
+<arg>${LOGIN_BOTAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.024754" elapsed="0.030447"/>
+</kw>
+<arg>${EMAIL_CLIENTE}</arg>
+<arg>${SENHA_CLIENTE}</arg>
+<status status="PASS" start="2026-10-27T20:50:06.904659" elapsed="0.150647"/>
+</kw>
+<kw name="Verificar Login Realizado" owner="resources">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.055835" elapsed="0.213068"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=usuario-painel</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.269098" elapsed="0.003286"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:07.055608" elapsed="0.216912"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.353533" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT29_Evidencias/CT29_01_login_realizado.png"&gt;&lt;img src="CT29_Evidencias/CT29_01_login_realizado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.273066" elapsed="0.080843"/>
+</kw>
+<arg>CT29_01_login_realizado</arg>
+<status status="PASS" start="2026-10-27T20:50:07.272793" elapsed="0.081222"/>
+</kw>
+<kw name="Acessar Lista De Fabricantes" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LINK_FABRICANTES}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.354923" elapsed="0.010354"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.365933" level="INFO">Clicking element 'css:a.nav-link[href*='listagem-maker']'.</msg>
+<arg>${LINK_FABRICANTES}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.365584" elapsed="0.081767"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=listagem-maker</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.447595" elapsed="0.004589"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${FILTRO_CIDADE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.452449" elapsed="0.018298"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CARD_FABRICANTE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.470960" elapsed="0.005526"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:07.354451" elapsed="0.122155"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.722464" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT29_Evidencias/CT29_02_lista_de_fabricantes.png"&gt;&lt;img src="CT29_Evidencias/CT29_02_lista_de_fabricantes.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.477262" elapsed="0.245298"/>
+</kw>
+<arg>CT29_02_lista_de_fabricantes</arg>
+<status status="PASS" start="2026-10-27T20:50:07.476868" elapsed="0.245770"/>
+</kw>
+<kw name="Preencher Filtro De Localizacao" owner="resources">
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${FILTRO_CEP}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.723179" elapsed="0.015078"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.738784" level="INFO">Typing text 'Curitiba' into text field 'id:filtro-cidade'.</msg>
+<arg>${FILTRO_CIDADE}</arg>
+<arg>${cidade}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.738465" elapsed="0.032983"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.772067" level="INFO">Typing text 'PR' into text field 'id:filtro-estado'.</msg>
+<arg>${FILTRO_ESTADO}</arg>
+<arg>${estado}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.771702" elapsed="0.035273"/>
+</kw>
+<arg>${CIDADE_CT29}</arg>
+<arg>${ESTADO_CT29}</arg>
+<status status="PASS" start="2026-10-27T20:50:07.722887" elapsed="0.084230"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.938869" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT29_Evidencias/CT29_03_filtro_preenchido.png"&gt;&lt;img src="CT29_Evidencias/CT29_03_filtro_preenchido.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.807843" elapsed="0.131123"/>
+</kw>
+<arg>CT29_03_filtro_preenchido</arg>
+<status status="PASS" start="2026-10-27T20:50:07.807443" elapsed="0.131601"/>
+</kw>
+<kw name="Buscar Fabricantes Por Localizacao" owner="resources">
+<kw name="Clicar Via JS" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.939806" elapsed="0.008361"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.952103" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="d039d6192dcb1ce2002bd9b33ed6cc30", element="f.A5BB2E7198978349BC027B71871E4396.d.1E928DA18D5137A6D9BD5E595BA76C04.e.56")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.948430" elapsed="0.003714"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.952594" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'}); arguments[0].click();
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="d039d6192dcb1ce2002bd9b33ed6cc30", element="f.A5BB2E7198978349BC027B71871E4396.d.1E928DA18D5137A6D9BD5E595BA76C04.e.56")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'}); arguments[0].click();</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.952345" elapsed="0.008093"/>
+</kw>
+<arg>${FILTRO_BOTAO_BUSCAR}</arg>
+<doc>Rola o elemento até o centro da tela e clica via JavaScript.
+Evita o erro "element click intercepted" em botões que ficam atrás de outros elementos.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.939632" elapsed="0.020952"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${FILTRO_MENSAGEM}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.960759" elapsed="0.011995"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:07.990212" level="INFO">Element 'id:grid-makers' does not contain text 'Buscando fabricantes'.</msg>
+<arg>${GRID_FABRICANTES}</arg>
+<arg>Buscando fabricantes</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.973519" elapsed="0.016797"/>
+</kw>
+<arg>10s</arg>
+<arg>500ms</arg>
+<arg>Element Should Not Contain</arg>
+<arg>${GRID_FABRICANTES}</arg>
+<arg>Buscando fabricantes</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.973026" elapsed="0.017375"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:08.490934" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:07.990556" elapsed="0.500525"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:07.939416" elapsed="0.551781"/>
+</kw>
+<kw name="Verificar Fabricantes Somente Da Regiao" owner="resources">
+<kw name="Obter Localizacoes Dos Fabricantes Exibidos" owner="resources">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:08.491993" level="INFO">Executing JavaScript:
+return Array.from(document.querySelectorAll('#grid-makers .maker-card .maker-local')).map(e =&gt; e.innerText.trim());
+Without any arguments.</msg>
+<msg time="2026-10-27T20:50:08.496034" level="INFO">${locais} = ['Curitiba, PR', 'Curitiba, PR']</msg>
+<var>${locais}</var>
+<arg>return Array.from(document.querySelectorAll('#grid-makers .maker-card .maker-local')).map(e =&gt; e.innerText.trim());</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.491896" elapsed="0.004184"/>
+</kw>
+<return>
+<value>${locais}</value>
+<status status="PASS" start="2026-10-27T20:50:08.496184" elapsed="0.000068"/>
+</return>
+<msg time="2026-10-27T20:50:08.496413" level="INFO">${locais} = ['Curitiba, PR', 'Curitiba, PR']</msg>
+<var>${locais}</var>
+<status status="PASS" start="2026-10-27T20:50:08.491750" elapsed="0.004695"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-27T20:50:08.497175" level="INFO">Length is 2.</msg>
+<msg time="2026-10-27T20:50:08.497250" level="INFO">${qtd} = 2</msg>
+<var>${qtd}</var>
+<arg>${locais}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.496629" elapsed="0.000640"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${qtd} &gt; 0</arg>
+<arg>msg=Nenhum fabricante foi exibido para ${cidade}/${estado}.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.497445" elapsed="0.000413"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-27T20:50:08.498373" level="INFO">Fabricantes exibidos (2): ['Curitiba, PR', 'Curitiba, PR']</msg>
+<arg>Fabricantes exibidos (${qtd}): ${locais}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.498157" elapsed="0.000258"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${local}</arg>
+<arg>${cidade}</arg>
+<arg>msg=Fabricante fora da cidade filtrada: "${local}".</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.498727" elapsed="0.000290"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${local}</arg>
+<arg>${estado}</arg>
+<arg>msg=Fabricante fora do estado filtrado: "${local}".</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.499136" elapsed="0.000274"/>
+</kw>
+<var name="${local}">Curitiba, PR</var>
+<status status="PASS" start="2026-10-27T20:50:08.498616" elapsed="0.000839"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${local}</arg>
+<arg>${cidade}</arg>
+<arg>msg=Fabricante fora da cidade filtrada: "${local}".</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.499636" elapsed="0.000227"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${local}</arg>
+<arg>${estado}</arg>
+<arg>msg=Fabricante fora do estado filtrado: "${local}".</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.499973" elapsed="0.000244"/>
+</kw>
+<var name="${local}">Curitiba, PR</var>
+<status status="PASS" start="2026-10-27T20:50:08.499544" elapsed="0.000720"/>
+</iter>
+<var>${local}</var>
+<value>@{locais}</value>
+<status status="PASS" start="2026-10-27T20:50:08.498479" elapsed="0.001830"/>
+</for>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:08.509415" level="INFO">Element 'id:mensagem-filtro' contains text 'fabricante(s) encontrado(s)'.</msg>
+<arg>${FILTRO_MENSAGEM}</arg>
+<arg>fabricante(s) encontrado(s)</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.500456" elapsed="0.009056"/>
+</kw>
+<arg>${CIDADE_CT29}</arg>
+<arg>${ESTADO_CT29}</arg>
+<status status="PASS" start="2026-10-27T20:50:08.491517" elapsed="0.018084"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:08.514672" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="d039d6192dcb1ce2002bd9b33ed6cc30", element="f.A5BB2E7198978349BC027B71871E4396.d.1E928DA18D5137A6D9BD5E595BA76C04.e.59")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.510220" elapsed="0.004517"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:08.515295" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="d039d6192dcb1ce2002bd9b33ed6cc30", element="f.A5BB2E7198978349BC027B71871E4396.d.1E928DA18D5137A6D9BD5E595BA76C04.e.59")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.515018" elapsed="0.004314"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:09.020232" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:08.519570" elapsed="0.500810"/>
+</kw>
+<arg>${GRID_FABRICANTES}</arg>
+<status status="PASS" start="2026-10-27T20:50:08.509889" elapsed="0.510616"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:09.131407" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT29_Evidencias/CT29_04_fabricantes_da_regiao.png"&gt;&lt;img src="CT29_Evidencias/CT29_04_fabricantes_da_regiao.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:09.021165" elapsed="0.110471"/>
+</kw>
+<arg>CT29_04_fabricantes_da_regiao</arg>
+<status status="PASS" start="2026-10-27T20:50:09.020844" elapsed="0.110939"/>
+</kw>
+<kw name="Fechar Navegador" owner="resources" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:09.237880" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT29_Evidencias/tela_final_1.png"&gt;&lt;img src="CT29_Evidencias/tela_final_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>tela_final_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:09.132966" elapsed="0.105078"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>tela_final_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible errorw.</doc>
+<status status="PASS" start="2026-10-27T20:50:09.132625" elapsed="0.105545"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-27T20:50:09.238374" elapsed="2.125987"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:09.132263" elapsed="2.232251"/>
+</kw>
+<doc>Cliente pesquisa fabricantes na cidade "Curitiba", estado "PR", pelo filtro de localização.
+Esperado: são exibidos apenas fabricantes de Curitiba/PR.
+Pré-condição: existem fabricantes aprovados em Curitiba/PR (ex.: Maria e CaCa 3D).
+Evidências: resultados/CT29_Evidencias</doc>
+<tag>ct29</tag>
+<tag>fabricantes</tag>
+<tag>filtro</tag>
+<status status="PASS" start="2026-10-27T20:50:05.620723" elapsed="5.743950"/>
+</test>
+<test id="s1-t4" name="CT30 - Cliente filtra fabricantes em região sem cadastro e vê a mensagem de nenhum encontrado" line="78">
+<kw name="Abrir Navegador" owner="resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:11.366119" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:11.365940" elapsed="0.731726"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.097865" elapsed="0.028619"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${OUTPUT DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.126745" elapsed="0.000425"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:11.365586" elapsed="0.761668"/>
+</kw>
+<kw name="Definir Pasta De Evidencias" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:50:12.128011" level="INFO">${caminho} = C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT30_Evidencias</msg>
+<var>${caminho}</var>
+<arg>${OUTPUT DIR}${/}${pasta}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.127761" elapsed="0.000298"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-10-27T20:50:12.128793" level="INFO" html="true">Created directory '&lt;a href="file://C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT30_Evidencias"&gt;C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT30_Evidencias&lt;/a&gt;'.</msg>
+<arg>${caminho}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.128143" elapsed="0.000718"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${caminho}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.128971" elapsed="0.000307"/>
+</kw>
+<arg>CT30_Evidencias</arg>
+<status status="PASS" start="2026-10-27T20:50:12.127524" elapsed="0.001814"/>
+</kw>
+<kw name="Fazer Login" owner="resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.129808" level="INFO">Opening url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.129742" elapsed="0.024075"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.154059" elapsed="0.013747"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.168178" level="INFO">Typing text 'joao@email.com' into text field 'id:email'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.167975" elapsed="0.045374"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.213898" level="INFO">Typing text '123456' into text field 'id:senha'.</msg>
+<arg>${LOGIN_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.213585" elapsed="0.055491"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.269686" level="INFO">Clicking element 'id:entrar'.</msg>
+<arg>${LOGIN_BOTAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.269358" elapsed="0.031065"/>
+</kw>
+<arg>${EMAIL_CLIENTE}</arg>
+<arg>${SENHA_CLIENTE}</arg>
+<status status="PASS" start="2026-10-27T20:50:12.129546" elapsed="0.171018"/>
+</kw>
+<kw name="Verificar Login Realizado" owner="resources">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.301254" elapsed="0.318277"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=usuario-painel</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.619702" elapsed="0.003623"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:12.300913" elapsed="0.322553"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.702693" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT30_Evidencias/CT30_01_login_realizado.png"&gt;&lt;img src="CT30_Evidencias/CT30_01_login_realizado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.624275" elapsed="0.078552"/>
+</kw>
+<arg>CT30_01_login_realizado</arg>
+<status status="PASS" start="2026-10-27T20:50:12.623820" elapsed="0.079132"/>
+</kw>
+<kw name="Acessar Lista De Fabricantes" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LINK_FABRICANTES}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.703611" elapsed="0.008352"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:12.712592" level="INFO">Clicking element 'css:a.nav-link[href*='listagem-maker']'.</msg>
+<arg>${LINK_FABRICANTES}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.712271" elapsed="0.082175"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=listagem-maker</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.794712" elapsed="0.006070"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${FILTRO_CIDADE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.801042" elapsed="0.019095"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CARD_FABRICANTE}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.820346" elapsed="0.004874"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:12.703296" elapsed="0.122034"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.037171" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT30_Evidencias/CT30_02_lista_de_fabricantes.png"&gt;&lt;img src="CT30_Evidencias/CT30_02_lista_de_fabricantes.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:12.825942" elapsed="0.211387"/>
+</kw>
+<arg>CT30_02_lista_de_fabricantes</arg>
+<status status="PASS" start="2026-10-27T20:50:12.825589" elapsed="0.211849"/>
+</kw>
+<kw name="Preencher Filtro De Localizacao" owner="resources">
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${FILTRO_CEP}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.038081" elapsed="0.013923"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.052658" level="INFO">Typing text 'Campo Largo' into text field 'id:filtro-cidade'.</msg>
+<arg>${FILTRO_CIDADE}</arg>
+<arg>${cidade}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.052282" elapsed="0.036641"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.089465" level="INFO">Typing text 'PR' into text field 'id:filtro-estado'.</msg>
+<arg>${FILTRO_ESTADO}</arg>
+<arg>${estado}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.089170" elapsed="0.030820"/>
+</kw>
+<arg>${CIDADE_CT30}</arg>
+<arg>${ESTADO_CT30}</arg>
+<status status="PASS" start="2026-10-27T20:50:13.037756" elapsed="0.082368"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.254730" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT30_Evidencias/CT30_03_filtro_preenchido.png"&gt;&lt;img src="CT30_Evidencias/CT30_03_filtro_preenchido.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.120775" elapsed="0.134088"/>
+</kw>
+<arg>CT30_03_filtro_preenchido</arg>
+<status status="PASS" start="2026-10-27T20:50:13.120450" elapsed="0.134518"/>
+</kw>
+<kw name="Buscar Fabricantes Por Localizacao" owner="resources">
+<kw name="Clicar Via JS" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.255945" elapsed="0.015036"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.274949" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="85060c350f5bf5dd57225d00fdc22cca", element="f.A9A45FC6FF593269FC3B9CBB457F2E66.d.7D45DAD8580165CD8F5BFF666023DADC.e.56")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.271199" elapsed="0.003792"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.275326" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'}); arguments[0].click();
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="85060c350f5bf5dd57225d00fdc22cca", element="f.A9A45FC6FF593269FC3B9CBB457F2E66.d.7D45DAD8580165CD8F5BFF666023DADC.e.56")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'}); arguments[0].click();</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.275167" elapsed="0.006170"/>
+</kw>
+<arg>${FILTRO_BOTAO_BUSCAR}</arg>
+<doc>Rola o elemento até o centro da tela e clica via JavaScript.
+Evita o erro "element click intercepted" em botões que ficam atrás de outros elementos.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.255690" elapsed="0.025837"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${FILTRO_MENSAGEM}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.281763" elapsed="0.023585"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.318925" level="INFO">Element 'id:grid-makers' does not contain text 'Buscando fabricantes'.</msg>
+<arg>${GRID_FABRICANTES}</arg>
+<arg>Buscando fabricantes</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.306210" elapsed="0.012821"/>
+</kw>
+<arg>10s</arg>
+<arg>500ms</arg>
+<arg>Element Should Not Contain</arg>
+<arg>${GRID_FABRICANTES}</arg>
+<arg>Buscando fabricantes</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.305583" elapsed="0.013531"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:13.820064" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.319265" elapsed="0.500936"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:13.255378" elapsed="0.564947"/>
+</kw>
+<kw name="Verificar Mensagem De Nenhum Fabricante" owner="resources">
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.828885" level="INFO">Element 'id:mensagem-filtro' contains text 'Nenhum fabricante encontrado nesta região.'.</msg>
+<arg>${FILTRO_MENSAGEM}</arg>
+<arg>${MSG_SEM_FABRICANTE}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.820977" elapsed="0.008001"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.835840" level="INFO">Element 'id:grid-makers' contains text 'Nenhum fabricante encontrado nesta região.'.</msg>
+<arg>${GRID_FABRICANTES}</arg>
+<arg>${MSG_SEM_FABRICANTE}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.829146" elapsed="0.006768"/>
+</kw>
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.838505" level="INFO">${qtd} = 0</msg>
+<var>${qtd}</var>
+<arg>${CARD_FABRICANTE}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.836048" elapsed="0.002487"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-27T20:50:13.838879" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${qtd}</arg>
+<arg>0</arg>
+<arg>msg=Foram exibidos fabricantes em uma região sem cadastro.</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.838656" elapsed="0.000264"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:13.820653" elapsed="0.018325"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.843193" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="85060c350f5bf5dd57225d00fdc22cca", element="f.A9A45FC6FF593269FC3B9CBB457F2E66.d.7D45DAD8580165CD8F5BFF666023DADC.e.57")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.839625" elapsed="0.003630"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:13.843711" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="85060c350f5bf5dd57225d00fdc22cca", element="f.A9A45FC6FF593269FC3B9CBB457F2E66.d.7D45DAD8580165CD8F5BFF666023DADC.e.57")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.843500" elapsed="0.003575"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:14.347917" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:13.847261" elapsed="0.500790"/>
+</kw>
+<arg>${FILTRO_MENSAGEM}</arg>
+<status status="PASS" start="2026-10-27T20:50:13.839335" elapsed="0.508833"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:14.498115" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT30_Evidencias/CT30_04_nenhum_fabricante_encontrado.png"&gt;&lt;img src="CT30_Evidencias/CT30_04_nenhum_fabricante_encontrado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:14.348901" elapsed="0.149359"/>
+</kw>
+<arg>CT30_04_nenhum_fabricante_encontrado</arg>
+<status status="PASS" start="2026-10-27T20:50:14.348513" elapsed="0.149873"/>
+</kw>
+<kw name="Fechar Navegador" owner="resources" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:14.640698" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT30_Evidencias/tela_final_1.png"&gt;&lt;img src="CT30_Evidencias/tela_final_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>tela_final_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:14.499405" elapsed="0.141436"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>tela_final_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible errorw.</doc>
+<status status="PASS" start="2026-10-27T20:50:14.499047" elapsed="0.141891"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-27T20:50:14.641085" elapsed="2.139427"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:14.498753" elapsed="2.281886"/>
+</kw>
+<doc>Cliente pesquisa fabricantes na cidade "Campo Largo", estado "PR", onde não há fabricantes.
+Esperado: o sistema exibe a mensagem "Nenhum fabricante encontrado nesta região." e nenhum card.
+Pré-condição: não existe fabricante aprovado cadastrado em Campo Largo/PR.
+Evidências: resultados/CT30_Evidencias</doc>
+<tag>ct30</tag>
+<tag>fabricantes</tag>
+<tag>filtro</tag>
+<status status="PASS" start="2026-10-27T20:50:11.365137" elapsed="5.415673"/>
+</test>
+<test id="s1-t5" name="CT31 - Cliente envia mensagem ao fabricante e ela aparece na conversa com o horário do envio" line="100">
+<kw name="Abrir Navegador" owner="resources" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:16.782395" level="INFO">Opening browser 'Chrome' to base url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'.</msg>
+<arg>${URL_LOGIN}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_experimental_option("prefs", {"credentials_enable_service": False, "profile.password_manager_enabled": False, "profile.password_manager_leak_detection": False})</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:16.782219" elapsed="1.256937"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.039371" elapsed="0.029884"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${OUTPUT DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.069413" elapsed="0.000427"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:16.781877" elapsed="1.288066"/>
+</kw>
+<kw name="Definir Pasta De Evidencias" owner="resources">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:50:18.070987" level="INFO">${caminho} = C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT31_Evidencias</msg>
+<var>${caminho}</var>
+<arg>${OUTPUT DIR}${/}${pasta}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.070656" elapsed="0.000361"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-10-27T20:50:18.071854" level="INFO" html="true">Created directory '&lt;a href="file://C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT31_Evidencias"&gt;C:\Users\PEDRO\OneDrive\Downloads\Avaliacao-Somativa-RA3-Testes-Automatizados\pedro\resultados\CT31_Evidencias&lt;/a&gt;'.</msg>
+<arg>${caminho}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.071125" elapsed="0.000807"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
+<arg>${caminho}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.072070" elapsed="0.000385"/>
+</kw>
+<arg>CT31_Evidencias</arg>
+<status status="PASS" start="2026-10-27T20:50:18.070296" elapsed="0.002246"/>
+</kw>
+<kw name="Fazer Login" owner="resources">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.073212" level="INFO">Opening url 'http://localhost/Printly/Printly-main/public/index.php?rota=login'</msg>
+<arg>${URL_LOGIN}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.073118" elapsed="0.026677"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.100009" elapsed="0.012041"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.112423" level="INFO">Typing text 'joao@email.com' into text field 'id:email'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.112215" elapsed="0.047680"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.160592" level="INFO">Typing text '123456' into text field 'id:senha'.</msg>
+<arg>${LOGIN_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.160135" elapsed="0.042806"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.203432" level="INFO">Clicking element 'id:entrar'.</msg>
+<arg>${LOGIN_BOTAO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.203144" elapsed="0.034964"/>
+</kw>
+<arg>${EMAIL_CLIENTE}</arg>
+<arg>${SENHA_CLIENTE}</arg>
+<status status="PASS" start="2026-10-27T20:50:18.072836" elapsed="0.165406"/>
+</kw>
+<kw name="Verificar Login Realizado" owner="resources">
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.238967" elapsed="0.326196"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=usuario-painel</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.565359" elapsed="0.002648"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:18.238614" elapsed="0.329488"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.645853" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT31_Evidencias/CT31_01_login_realizado.png"&gt;&lt;img src="CT31_Evidencias/CT31_01_login_realizado.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.568699" elapsed="0.077261"/>
+</kw>
+<arg>CT31_01_login_realizado</arg>
+<status status="PASS" start="2026-10-27T20:50:18.568384" elapsed="0.077673"/>
+</kw>
+<kw name="Acessar Meus Projetos" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.646645" elapsed="0.009327"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:18.656418" level="INFO">Clicking element 'css:a.nav-link[href*='meus_projetos']'.</msg>
+<arg>${LINK_MEUS_PROJETOS}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.656176" elapsed="0.096794"/>
+</kw>
+<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
+<arg>rota=meus_projetos</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.753362" elapsed="0.006916"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${CARD_PROJETO}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.760512" elapsed="0.210656"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:18.646376" elapsed="0.324934"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.084355" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT31_Evidencias/CT31_02_meus_projetos.png"&gt;&lt;img src="CT31_Evidencias/CT31_02_meus_projetos.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:18.971995" elapsed="0.112488"/>
+</kw>
+<arg>CT31_02_meus_projetos</arg>
+<status status="PASS" start="2026-10-27T20:50:18.971605" elapsed="0.113006"/>
+</kw>
+<kw name="Abrir Chat Do Projeto" owner="resources">
+<kw name="Localizar Card Do Projeto" owner="resources">
+<kw name="Montar Locator Do Card" owner="resources">
+<return>
+<value>xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='${nome}']])[1]</value>
+<status status="PASS" start="2026-10-27T20:50:19.085663" elapsed="0.000047"/>
+</return>
+<msg time="2026-10-27T20:50:19.085821" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Caneca']])[1]</msg>
+<var>${card}</var>
+<arg>${nome}</arg>
+<doc>Retorna o xpath do (primeiro) card de projeto com o nome informado.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.085517" elapsed="0.000336"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${card}</arg>
+<arg>timeout=10s</arg>
+<arg>error=O projeto "${nome}" não foi encontrado em "Meus Projetos" do cliente.</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.085967" elapsed="0.006412"/>
+</kw>
+<kw name="Rolar Ate O Elemento" owner="resources">
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.096721" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="b125373ac1775c3a3506bed655996ac6", element="f.F0F329E6E47E3E11C2944927D2752764.d.B0350DCBF6C524FDA250821485CA10A6.e.73")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.092863" elapsed="0.003921"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.097257" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'});
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="b125373ac1775c3a3506bed655996ac6", element="f.F0F329E6E47E3E11C2944927D2752764.d.B0350DCBF6C524FDA250821485CA10A6.e.73")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'});</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.097033" elapsed="0.003542"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-10-27T20:50:19.601127" level="INFO">Slept 500 milliseconds.</msg>
+<arg>500ms</arg>
+<doc>Pauses execution for the given time.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.100754" elapsed="0.500516"/>
+</kw>
+<arg>${card}</arg>
+<status status="PASS" start="2026-10-27T20:50:19.092598" elapsed="0.508782"/>
+</kw>
+<return>
+<value>${card}</value>
+<status status="PASS" start="2026-10-27T20:50:19.601448" elapsed="0.000062"/>
+</return>
+<msg time="2026-10-27T20:50:19.601714" level="INFO">${card} = xpath:(//div[contains(@class,'projeto-card')][.//h5[contains(@class,'card-titulo')][normalize-space()='Caneca']])[1]</msg>
+<var>${card}</var>
+<arg>${nome}</arg>
+<status status="PASS" start="2026-10-27T20:50:19.085283" elapsed="0.516460"/>
+</kw>
+<kw name="Clicar Via JS" owner="resources">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.602213" elapsed="0.010023"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.616472" level="INFO">${el} = &lt;selenium.webdriver.remote.webelement.WebElement (session="b125373ac1775c3a3506bed655996ac6", element="f.F0F329E6E47E3E11C2944927D2752764.d.B0350DCBF6C524FDA250821485CA10A6.e.78")&gt;</msg>
+<var>${el}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.612424" elapsed="0.004118"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.617082" level="INFO">Executing JavaScript:
+arguments[0].scrollIntoView({block:'center'}); arguments[0].click();
+By using argument:
+'&lt;selenium.webdriver.remote.webelement.WebElement (session="b125373ac1775c3a3506bed655996ac6", element="f.F0F329E6E47E3E11C2944927D2752764.d.B0350DCBF6C524FDA250821485CA10A6.e.78")&gt;'</msg>
+<arg>arguments[0].scrollIntoView({block:'center'}); arguments[0].click();</arg>
+<arg>ARGUMENTS</arg>
+<arg>${el}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.616811" elapsed="0.009947"/>
+</kw>
+<arg>${card}//button[contains(@class,'btn-chat')]</arg>
+<doc>Rola o elemento até o centro da tela e clica via JavaScript.
+Evita o erro "element click intercepted" em botões que ficam atrás de outros elementos.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.601926" elapsed="0.025026"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MODAL_CHAT}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.627190" elapsed="0.013159"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHAT_INPUT}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.640560" elapsed="0.008268"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Element Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.662469" level="INFO">Element 'id:chat-mensagens' does not contain text 'Carregando mensagens'.</msg>
+<arg>${CHAT_MENSAGENS}</arg>
+<arg>Carregando mensagens</arg>
+<doc>Verifies that element ``locator`` does not contain text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.649750" elapsed="0.012816"/>
+</kw>
+<arg>10s</arg>
+<arg>500ms</arg>
+<arg>Element Should Not Contain</arg>
+<arg>${CHAT_MENSAGENS}</arg>
+<arg>Carregando mensagens</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.649190" elapsed="0.013457"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.673201" level="INFO">Element 'id:chat-subtitulo' contains text 'Caneca'.</msg>
+<arg>id:chat-subtitulo</arg>
+<arg>${nome}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.662796" elapsed="0.010522"/>
+</kw>
+<arg>${PROJETO_CT31}</arg>
+<status status="PASS" start="2026-10-27T20:50:19.084967" elapsed="0.588481"/>
+</kw>
+<kw name="Contar Minhas Mensagens No Chat" owner="resources">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.679342" level="INFO">${qtd} = 2</msg>
+<var>${qtd}</var>
+<arg>${CHAT_MINHAS_MSGS}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.674146" elapsed="0.005246"/>
+</kw>
+<return>
+<value>${qtd}</value>
+<status status="PASS" start="2026-10-27T20:50:19.679487" elapsed="0.000052"/>
+</return>
+<msg time="2026-10-27T20:50:19.679736" level="INFO">${antes} = 2</msg>
+<var>${antes}</var>
+<status status="PASS" start="2026-10-27T20:50:19.673792" elapsed="0.005980"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.810027" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT31_Evidencias/CT31_03_conversa_aberta.png"&gt;&lt;img src="CT31_Evidencias/CT31_03_conversa_aberta.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.680618" elapsed="0.129540"/>
+</kw>
+<arg>CT31_03_conversa_aberta</arg>
+<status status="PASS" start="2026-10-27T20:50:19.680299" elapsed="0.129984"/>
+</kw>
+<kw name="Enviar Mensagem No Chat" owner="resources">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.811210" level="INFO">Typing text 'Oi, como está o andamento do projeto?' into text field 'id:chat-input'.</msg>
+<arg>${CHAT_INPUT}</arg>
+<arg>${mensagem}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.810989" elapsed="0.060415"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.872183" level="INFO">Clicking element 'css:#chat-form .chat-btn-enviar'.</msg>
+<arg>${CHAT_BOTAO_ENVIAR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.871737" elapsed="0.034435"/>
+</kw>
+<arg>${MENSAGEM_CT31}</arg>
+<status status="PASS" start="2026-10-27T20:50:19.810639" elapsed="0.095669"/>
+</kw>
+<kw name="Verificar Mensagem Enviada Com Horario" owner="resources">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-27T20:50:19.907568" level="INFO">${esperado} = 3</msg>
+<var>${esperado}</var>
+<arg>${qtd_antes} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.907136" elapsed="0.000460"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Verificar Quantidade De Mensagens" owner="resources">
+<kw name="Contar Minhas Mensagens No Chat" owner="resources">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:19.913403" level="INFO">${qtd} = 2</msg>
+<var>${qtd}</var>
+<arg>${CHAT_MINHAS_MSGS}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.908461" elapsed="0.004995"/>
+</kw>
+<return>
+<value>${qtd}</value>
+<status status="PASS" start="2026-10-27T20:50:19.913612" elapsed="0.000056"/>
+</return>
+<msg time="2026-10-27T20:50:19.913825" level="INFO">${qtd} = 2</msg>
+<var>${qtd}</var>
+<status status="PASS" start="2026-10-27T20:50:19.908306" elapsed="0.005542"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-27T20:50:19.914838" level="FAIL">2 != 3</msg>
+<arg>${qtd}</arg>
+<arg>${esperado}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2026-10-27T20:50:19.914233" elapsed="0.000921">2 != 3</status>
+</kw>
+<arg>${esperado}</arg>
+<status status="FAIL" start="2026-10-27T20:50:19.908082" elapsed="0.007277">2 != 3</status>
+</kw>
+<kw name="Verificar Quantidade De Mensagens" owner="resources">
+<kw name="Contar Minhas Mensagens No Chat" owner="resources">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:20.170968" level="INFO">${qtd} = 3</msg>
+<var>${qtd}</var>
+<arg>${CHAT_MINHAS_MSGS}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.166607" elapsed="0.004413"/>
+</kw>
+<return>
+<value>${qtd}</value>
+<status status="PASS" start="2026-10-27T20:50:20.171115" elapsed="0.000057"/>
+</return>
+<msg time="2026-10-27T20:50:20.171331" level="INFO">${qtd} = 3</msg>
+<var>${qtd}</var>
+<status status="PASS" start="2026-10-27T20:50:20.166404" elapsed="0.004948"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${qtd}</arg>
+<arg>${esperado}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.171483" elapsed="0.000294"/>
+</kw>
+<arg>${esperado}</arg>
+<status status="PASS" start="2026-10-27T20:50:20.166002" elapsed="0.005832"/>
+</kw>
+<arg>5s</arg>
+<arg>250ms</arg>
+<arg>Verificar Quantidade De Mensagens</arg>
+<arg>${esperado}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-10-27T20:50:19.907744" elapsed="0.264122"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-27T20:50:20.172156" level="INFO">${ultima} = css:#chat-mensagens .chat-msg.eu:last-child .chat-msg-balao</msg>
+<var>${ultima}</var>
+<arg>css:#chat-mensagens .chat-msg.eu:last-child .chat-msg-balao</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.171953" elapsed="0.000230"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:20.181892" level="INFO">Element 'css:#chat-mensagens .chat-msg.eu:last-child .chat-msg-balao' contains text 'Oi, como está o andamento do projeto?'.</msg>
+<arg>${ultima}</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.172305" elapsed="0.009686"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:20.190254" level="INFO">${hora} = 20:50</msg>
+<var>${hora}</var>
+<arg>css:#chat-mensagens .chat-msg.eu:last-child .chat-msg-hora</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.182162" elapsed="0.008128"/>
+</kw>
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${hora}</arg>
+<arg>\\d{2}:\\d{2}</arg>
+<arg>msg=A mensagem enviada não exibe o horário do envio.</arg>
+<doc>Fails if the `string` does not match the regular expression `pattern`.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.190460" elapsed="0.000458"/>
+</kw>
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2026-10-27T20:50:20.191424" level="INFO">${agora} = ['20', '50']</msg>
+<var>${agora}</var>
+<arg>hour:min</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.191120" elapsed="0.000333"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-27T20:50:20.191914" level="INFO">Horário exibido na mensagem: 20:50 | Horário do computador no envio: 20:50</msg>
+<arg>Horário exibido na mensagem: ${hora} | Horário do computador no envio: ${agora}[0]:${agora}[1]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.191639" elapsed="0.000321"/>
+</kw>
+<arg>${MENSAGEM_CT31}</arg>
+<arg>${antes}</arg>
+<status status="PASS" start="2026-10-27T20:50:19.906692" elapsed="0.285320"/>
+</kw>
+<kw name="Registrar Evidencia" owner="resources">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:20.261992" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT31_Evidencias/CT31_04_mensagem_enviada_com_horario.png"&gt;&lt;img src="CT31_Evidencias/CT31_04_mensagem_enviada_com_horario.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${nome}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.192523" elapsed="0.069588"/>
+</kw>
+<arg>CT31_04_mensagem_enviada_com_horario</arg>
+<status status="PASS" start="2026-10-27T20:50:20.192253" elapsed="0.069967"/>
+</kw>
+<kw name="Fechar Navegador" owner="resources" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-10-27T20:50:20.330558" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="CT31_Evidencias/tela_final_1.png"&gt;&lt;img src="CT31_Evidencias/tela_final_1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>tela_final_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.263105" elapsed="0.067556"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>tela_final_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible errorw.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.262811" elapsed="0.067928"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-27T20:50:20.330864" elapsed="2.145728"/>
+</kw>
+<status status="PASS" start="2026-10-27T20:50:20.262562" elapsed="2.214195"/>
+</kw>
+<doc>Cliente abre o chat do projeto "Caneca" e envia a mensagem
+"Oi, como está o andamento do projeto?".
+Esperado: a mensagem aparece imediatamente na conversa, com o horário do envio.
+Pré-condição: o cliente João possui o projeto "Caneca" vinculado a um fabricante.
+Dados: grava uma mensagem nova na conversa a cada execução.
+Evidências: resultados/CT31_Evidencias</doc>
+<tag>chat</tag>
+<tag>ct31</tag>
+<status status="PASS" start="2026-10-27T20:50:16.781442" elapsed="5.695639"/>
+</test>
+<doc>Casos de teste automatizados do Printly (autor: Pedro)
+Casos do plano do RA2 sob responsabilidade do Pedro: CT25, CT27, CT29, CT30 e CT31.</doc>
+<status status="FAIL" start="2026-10-27T20:49:54.330045" elapsed="28.147697"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">chat</stat>
+<stat pass="1" fail="0" skip="0">ct25</stat>
+<stat pass="0" fail="1" skip="0">ct27</stat>
+<stat pass="1" fail="0" skip="0">ct29</stat>
+<stat pass="1" fail="0" skip="0">ct30</stat>
+<stat pass="1" fail="0" skip="0">ct31</stat>
+<stat pass="0" fail="1" skip="0">defeito_conhecido</stat>
+<stat pass="2" fail="0" skip="0">fabricantes</stat>
+<stat pass="2" fail="0" skip="0">filtro</stat>
+<stat pass="1" fail="0" skip="0">historico</stat>
+<stat pass="1" fail="1" skip="0">projetos</stat>
+</tag>
+<suite>
+<stat name="Testes" id="s1" pass="4" fail="1" skip="0">Testes</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
