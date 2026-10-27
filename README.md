@@ -28,7 +28,7 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 | Gabriela | `gabriela/` | CT9, CT10, CT11, CT12, CT15 |
 | Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 (casos do plano) |
 | Laura | `laura/` | CT1, CT2, CT4, CT6, CT7 |
-| Pedro | `pedro/` | COMPLETAR |
+| Pedro | `pedro/` | CT25, CT27, CT29, CT30, CT31 |
 
 > **Notação:** `CTxx` é o ID de um caso de teste do plano do RA2; `Cxx` é o número de um cenário do plano.
 
