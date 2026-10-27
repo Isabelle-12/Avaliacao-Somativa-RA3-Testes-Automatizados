@@ -22,13 +22,15 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 
 ## 👥 Equipe
 
-| Integrante | Pasta | Casos automatizados (ID do plano do RA2) |
+| Integrante | Pasta | Casos automatizados |
 |---|---|---|
-| Bruno | `bruno/` | CT08, CT16, CT20, CT21, CT23 |
-| Gabriela | `gabriela/` | CT9 , CT10 , CT11 , CT12 , CT15 |
-| Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 |
+| Bruno | `bruno/` | C8, C16, C20, C21, C23 (cenários do plano) |
+| Gabriela | `gabriela/` | CT9, CT10, CT11, CT12, CT15 |
+| Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 (casos do plano) |
 | Laura | `laura/` | COMPLETAR |
 | Pedro | `pedro/` | COMPLETAR |
+
+> **Notação:** `CTxx` é o ID de um caso de teste do plano do RA2; `Cxx` é o número de um cenário do plano.
 
 ---
 
@@ -152,21 +154,25 @@ Para visualizar, abra o `report.html` ou o `log.html` no navegador.
 
 ## ✅ Casos de teste automatizados
 
-Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
+Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenário (`Cxx`) do plano do RA2.
 
 | ID (RA2) | Funcionalidade | Responsável | Tag | Resultado |
 |---|---|---|---|---|
-| CT08 | Recusar cadastro de fabricante com informações ou fotos fora dos requisitos | Bruno | COMPLETAR | COMPLETAR |
-| CT16 | Fabricante responde a um feedback e a resposta é publicada vinculada ao comentário original | Bruno | COMPLETAR | COMPLETAR |
+| C8 | Cliente envia avaliação sobre o fabricante | Bruno | COMPLETAR | ✅ Passou |
+| C16 | Envio de mensagens entre cliente e fabricante | Bruno | COMPLETAR | ✅ Passou |
+| C20 | Usabilidade do fluxo de solicitação de pedido | Bruno | COMPLETAR | ✅ Passou |
+| C21 | Proteção contra SQL Injection no login | Bruno | COMPLETAR | ✅ Passou |
+| C23 | Integridade de dados na transação de pedido | Bruno | COMPLETAR | ✅ Passou |
+| CT9 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
+| CT10 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
+| CT11 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
+| CT12 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
+| CT15 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
 | CT17 | Fabricante define o preço por grama de filamento e salva com sucesso (C9) | Isabelle | `ct17`, `material` | ✅ Passou |
 | CT18 | Fabricante tenta inserir valor de material igual ou inferior a zero (C9) | Isabelle | `ct18`, `material` | ✅ Passou |
 | CT19 | Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso (C10) | Isabelle | `ct19`, `pedido`, `defeito_conhecido` | ❌ Falha esperada (defeito da HU 22) |
 | CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Isabelle | `ct20`, `pedido` | ✅ Passou |
-| CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Bruno | COMPLETAR | COMPLETAR |
 | CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Isabelle | `ct21`, `pedido` | ✅ Passou |
-| CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Bruno | COMPLETAR | COMPLETAR |
-| CT23 | Fabricante altera o status do pedido para "Em produção" e o cliente é notificado (C12) | Bruno | COMPLETAR | COMPLETAR |
-| COMPLETAR | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
 | COMPLETAR | COMPLETAR | Laura | COMPLETAR | COMPLETAR |
 | COMPLETAR | COMPLETAR | Pedro | COMPLETAR | COMPLETAR |
 
@@ -205,7 +211,6 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 
 **Outros:**
 - Os testes dependem do Printly rodando localmente e dos dados de teste importados.
-- `COMPLETAR`: casos do plano do RA2 que não foram automatizados e o motivo.
 
 ---
 
