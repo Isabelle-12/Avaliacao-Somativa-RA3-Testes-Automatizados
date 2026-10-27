@@ -27,7 +27,7 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 | Bruno | `bruno/` | C8, C16, C20, C21, C23 (cenários do plano) |
 | Gabriela | `gabriela/` | CT9, CT10, CT11, CT12, CT15 |
 | Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 (casos do plano) |
-| Laura | `laura/` | COMPLETAR |
+| Laura | `laura/` | CT1, CT2, CT4, CT6, CT7 |
 | Pedro | `pedro/` | COMPLETAR |
 
 > **Notação:** `CTxx` é o ID de um caso de teste do plano do RA2; `Cxx` é o número de um cenário do plano.
@@ -173,7 +173,11 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
 | CT19 | Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso (C10) | Isabelle | `ct19`, `pedido`, `defeito_conhecido` | ❌ Falha esperada (defeito da HU 22) |
 | CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Isabelle | `ct20`, `pedido` | ✅ Passou |
 | CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Isabelle | `ct21`, `pedido` | ✅ Passou |
-| COMPLETAR | COMPLETAR | Laura | COMPLETAR | COMPLETAR |
+| CT1 | Cadastrar cliente com todos os campos obrigatórios corretos (C1) | Laura | `ct1`, `cadastro` | ✅ Passou |
+| CT2 | Tentar cadastrar cliente com e-mail já existente (C1) | Laura | `ct2`, `cadastro` | ✅ Passou |
+| CT4 | Login com senha incorreta ou e-mail inexistente (C2) | Laura | `ct4`, `login` | ✅ Passou |
+| CT6 | Solicitar ser fabricante sem informar o endereço (C3) | Laura | `ct6`, `maker`, `defeito_conhecido` | ❌ Falha esperada (defeito: aceita sem endereço) |
+| CT7 | Administrador aprova cadastro de fabricante (C4) | Laura | `ct7`, `maker`, `admin` | ✅ Passou |
 | COMPLETAR | COMPLETAR | Pedro | COMPLETAR | COMPLETAR |
 
 ---
@@ -199,6 +203,20 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
   Por isso o teste confere o resultado contando os cards antes e depois de salvar.
 - **CT19, divergência com o plano:** o plano indica "sem partes personalizadas", mas o formulário exige ao menos uma
   parte; o teste adiciona uma.
+
+**Achados dos testes (Laura):**
+- **CT6, defeito conhecido (C3):** ao solicitar ser Maker, o Printly **não exige o endereço** e aceita a solicitação
+  mesmo com o campo "Endereço da Empresa / Ateliê" em branco (o back-end só valida impressora e material). O teste
+  registra a falha de propósito (o esperado seria o bloqueio) e, em seguida, confere o comportamento real: a mensagem
+  de sucesso é exibida mesmo sem o endereço.
+- **Alertas nativos (CT1, CT2, CT4):** as mensagens de cadastro e de login são janelas nativas do navegador, que o
+  Selenium não fotografa; o texto de cada uma é validado e fica registrado no `log.html`.
+- **Cliques no rodapé:** o checkbox de termos e o botão "Cadastrar" ficam no fim da página; os cliques são feitos via
+  JavaScript (rolando até o centro) para evitar o erro "element click intercepted".
+
+**Dados criados pelos testes (Laura):**
+- O CT1, o CT6 e o CT7 cadastram um cliente novo (e-mail e nome únicos) a cada execução.
+- O CT6 cria uma solicitação de Maker pendente; o CT7 cria outra solicitação e a aprova, tornando o cliente um Maker.
 
 **Limitações da automação:**
 - Aspectos visuais e de usabilidade não são avaliados pela automação e continuam dependendo de testes manuais
