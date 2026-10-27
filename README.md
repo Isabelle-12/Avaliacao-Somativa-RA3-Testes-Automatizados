@@ -24,7 +24,7 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 
 | Integrante | Pasta | Casos automatizados |
 |---|---|---|
-| Bruno | `bruno/` | C8, C16, C20, C21, C23 (cenários do plano) |
+| Bruno | `bruno/` | C23, C16, C20, C8, C21 (cenários do plano) |
 | Gabriela | `gabriela/` | CT9, CT10, CT11, CT12, CT15 |
 | Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 (casos do plano) |
 | Laura | `laura/` | CT1, CT2, CT4, CT6, CT7 |
@@ -135,6 +135,30 @@ py -m robot --outputdir isabelle/resultados isabelle/testes.robot
 py -m robot --outputdir isabelle/resultados -i ct17 isabelle/testes.robot
 py -m robot --outputdir isabelle/resultados -i pedido isabelle/testes.robot
 ```
+
+> Os testes do Bruno não usam tags. Para executá-los, rode o arquivo inteiro
+> (`py -m robot --outputdir bruno/resultados bruno/testes.robot`) ou um teste pelo nome, com `-t`.
+
+---
+
+## 🔢 Ordem de execução
+
+A ordem de execução dos testes é a ordem em que eles aparecem no `testes.robot` de cada integrante: o Robot Framework executa de cima para baixo. Para respeitá-la, execute o arquivo inteiro do integrante (primeiro comando da seção anterior).
+
+| Integrante | Arquivo | Ordem de execução | Dependências e observações |
+|---|---|---|---|
+| Bruno | `bruno/testes.robot` | C23 → C16 → C20 → C8 → C21 | COMPLETAR |
+| Gabriela | `gabriela/testes.robot` | COMPLETAR | COMPLETAR |
+| Isabelle | `isabelle/testes.robot` | CT17 → CT18 → CT19 → CT20 → CT21 | O **CT21 depende do CT19**: ele aceita o pedido pendente criado pelo CT19, que deve rodar antes. Os demais são independentes. |
+| Laura | `laura/testes.robot` | CT1 → CT2 → CT4 → CT6 → CT7 | Independentes entre si: cada execução cria dados novos (e-mail e nome únicos). |
+| Pedro | `pedro/testes.robot` | COMPLETAR | COMPLETAR |
+
+Se for necessário executar apenas parte dos testes da Isabelle por tag, mantenha o CT19 junto do CT21:
+
+```bash
+py -m robot --outputdir isabelle/resultados -i ct19ORct21 isabelle/testes.robot
+```
+
 ---
 
 ## 📊 Resultados
@@ -158,11 +182,11 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
 
 | ID (RA2) | Funcionalidade | Responsável | Tag | Resultado |
 |---|---|---|---|---|
-| C8 | Cliente envia avaliação sobre o fabricante | Bruno | COMPLETAR | ✅ Passou |
-| C16 | Envio de mensagens entre cliente e fabricante | Bruno | COMPLETAR | ✅ Passou |
-| C20 | Usabilidade do fluxo de solicitação de pedido | Bruno | COMPLETAR | ✅ Passou |
-| C21 | Proteção contra SQL Injection no login | Bruno | COMPLETAR | ✅ Passou |
-| C23 | Integridade de dados na transação de pedido | Bruno | COMPLETAR | ✅ Passou |
+| C23 | Integridade de dados na transação de pedido: o fabricante altera o status do pedido para "Em produção" e o mesmo status é validado nos painéis do fabricante e do cliente | Bruno | — | ✅ Passou |
+| C16 | Envio de mensagens entre cliente e fabricante: o cliente abre a conversa do pedido e valida que ela pode ser aberta | Bruno | — | ✅ Passou |
+| C20 | Usabilidade do fluxo de solicitação de pedido: valida o comportamento do formulário de pedido incompleto | Bruno | — | ✅ Passou |
+| C8 | Cliente envia avaliação sobre o fabricante, a partir do pedido em "Meus Pedidos" | Bruno | — | ✅ Passou |
+| C21 | Proteção contra SQL Injection no login | Bruno | — | ✅ Passou |
 | CT9 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
 | CT10 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
 | CT11 | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
@@ -223,7 +247,7 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
   (por exemplo, o contorno azul do campo vazio no CT20: o teste confere que o campo está inválido e com o foco).
 - Alertas nativos do navegador (CT18 e CT21) não aparecem nos prints; o teste valida o texto deles e o registra no `log.html`.
 
-**Dados criados pelos testes:**
+**Dados criados pelos testes (Isabelle):**
 - O CT17 cadastra um PETG novo a cada execução.
 - O CT19 cria um pedido novo a cada execução, e o CT21 o consome ao aceitá-lo.
 
@@ -234,7 +258,12 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
 
 ## 📦 Entrega
 
-`COMPLETAR` (formato e conteúdo do zip, após confirmação com o professor).
+A entrega é feita em **um único arquivo `.zip`**, enviado ao professor até **27/10/2026**.
+
+**Conteúdo do zip:**
+- `README.md` e `requirements.txt`;
+- a pasta de cada integrante (`bruno/`, `gabriela/`, `isabelle/`, `laura/` e `pedro/`), com `resources.robot`,
+  `testes.robot` e `resultados/` (relatórios, logs, XML e evidências em prints).
 
 ---
 
