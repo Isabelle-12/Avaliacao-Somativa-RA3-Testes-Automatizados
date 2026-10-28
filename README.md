@@ -22,13 +22,15 @@ Este repositório reúne a entrega do **RA3** da disciplina de **Verificação e
 
 ## 👥 Equipe
 
-| Integrante | Pasta | Casos automatizados (ID do plano do RA2) |
+| Integrante | Pasta | Casos automatizados |
 |---|---|---|
-| Bruno | `bruno/` | CT08, CT16, CT20, CT21, CT23 |
-| Gabriela | `gabriela/` | COMPLETAR |
-| Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 |
-| Laura | `laura/` | COMPLETAR |
-| Pedro | `pedro/` | COMPLETAR |
+| Bruno | `bruno/` | C23, C16, C20, C8, C21 (cenários do plano) |
+| Gabriela | `gabriela/` | CT9, CT10, CT11, CT12, CT15 |
+| Isabelle | `isabelle/` | CT17, CT18, CT19, CT20, CT21 (casos do plano) |
+| Laura | `laura/` | CT1, CT2, CT4, CT6, CT7 |
+| Pedro | `pedro/` | CT25, CT27, CT29, CT30, CT31 |
+
+> **Notação:** `CTxx` é o ID de um caso de teste do plano do RA2; `Cxx` é o número de um cenário do plano.
 
 ---
 
@@ -133,6 +135,30 @@ py -m robot --outputdir isabelle/resultados isabelle/testes.robot
 py -m robot --outputdir isabelle/resultados -i ct17 isabelle/testes.robot
 py -m robot --outputdir isabelle/resultados -i pedido isabelle/testes.robot
 ```
+
+> Os testes do Bruno não usam tags. Para executá-los, rode o arquivo inteiro
+> (`py -m robot --outputdir bruno/resultados bruno/testes.robot`) ou um teste pelo nome, com `-t`.
+
+---
+
+## 🔢 Ordem de execução
+
+A ordem de execução dos testes é a ordem em que eles aparecem no `testes.robot` de cada integrante: o Robot Framework executa de cima para baixo. Para respeitá-la, execute o arquivo inteiro do integrante (primeiro comando da seção anterior).
+
+| Integrante | Arquivo | Ordem de execução | Dependências e observações |
+|---|---|---|---|
+| Bruno | `bruno/testes.robot` | C23 → C16 → C20 → C8 → C21 | COMPLETAR |
+| Gabriela | `gabriela/testes.robot` | CT9 → CT10 → CT11 → CT12 → CT15 |
+| Isabelle | `isabelle/testes.robot` | CT17 → CT18 → CT19 → CT20 → CT21 | O **CT21 depende do CT19**: ele aceita o pedido pendente criado pelo CT19, que deve rodar antes. Os demais são independentes. |
+| Laura | `laura/testes.robot` | CT1 → CT2 → CT4 → CT6 → CT7 | Independentes entre si: cada execução cria dados novos (e-mail e nome únicos). |
+| Pedro | `pedro/testes.robot` | COMPLETAR | COMPLETAR |
+
+Se for necessário executar apenas parte dos testes da Isabelle por tag, mantenha o CT19 junto do CT21:
+
+```bash
+py -m robot --outputdir isabelle/resultados -i ct19ORct21 isabelle/testes.robot
+```
+
 ---
 
 ## 📊 Resultados
@@ -152,22 +178,30 @@ Para visualizar, abra o `report.html` ou o `log.html` no navegador.
 
 ## ✅ Casos de teste automatizados
 
-Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
+Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenário (`Cxx`) do plano do RA2.
 
 | ID (RA2) | Funcionalidade | Responsável | Tag | Resultado |
 |---|---|---|---|---|
-| CT08 | Recusar cadastro de fabricante com informações ou fotos fora dos requisitos | Bruno | COMPLETAR | COMPLETAR |
-| CT16 | Fabricante responde a um feedback e a resposta é publicada vinculada ao comentário original | Bruno | COMPLETAR | COMPLETAR |
+| C23 | Integridade de dados na transação de pedido: o fabricante altera o status do pedido para "Em produção" e o mesmo status é validado nos painéis do fabricante e do cliente | Bruno | — | ✅ Passou |
+| C16 | Envio de mensagens entre cliente e fabricante: o cliente abre a conversa do pedido e valida que ela pode ser aberta | Bruno | — | ✅ Passou |
+| C20 | Usabilidade do fluxo de solicitação de pedido: valida o comportamento do formulário de pedido incompleto | Bruno | — | ✅ Passou |
+| C8 | Cliente envia avaliação sobre o fabricante, a partir do pedido em "Meus Pedidos" | Bruno | — | ✅ Passou |
+| C21 | Proteção contra SQL Injection no login | Bruno | — | ✅ Passou |
+| CT9 | Fabricante atualiza as informações do perfil e salva com sucesso | Gabriela | - | ✅ Passou |
+| CT10 | Fabricante tenta salvar o perfil sem preencher nome e e-mail | Gabriela | — | ✅ Passou |
+| CT11 | Fabricante adiciona uma nova impressora ao portfólio e salva com sucesso | Gabriela | — | ✅ Passou |
+| CT12 | Fabricante tenta salvar uma impressora sem informar o modelo | Gabriela | — | ✅ Passou |
+| CT15 | Cliente envia uma avaliação (nota e comentário) sobre o fabricante após a entrega | Gabriela | — | ✅ Passou |
 | CT17 | Fabricante define o preço por grama de filamento e salva com sucesso (C9) | Isabelle | `ct17`, `material` | ✅ Passou |
 | CT18 | Fabricante tenta inserir valor de material igual ou inferior a zero (C9) | Isabelle | `ct18`, `material` | ✅ Passou |
 | CT19 | Cliente preenche todos os campos obrigatórios do pedido e confirma com sucesso (C10) | Isabelle | `ct19`, `pedido`, `defeito_conhecido` | ❌ Falha esperada (defeito da HU 22) |
 | CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Isabelle | `ct20`, `pedido` | ✅ Passou |
-| CT20 | Cliente tenta confirmar o pedido sem preencher campos obrigatórios (C10) | Bruno | COMPLETAR | COMPLETAR |
 | CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Isabelle | `ct21`, `pedido` | ✅ Passou |
-| CT21 | Fabricante aceita um pedido e verifica se o status muda para "Em produção" (C11) | Bruno | COMPLETAR | COMPLETAR |
-| CT23 | Fabricante altera o status do pedido para "Em produção" e o cliente é notificado (C12) | Bruno | COMPLETAR | COMPLETAR |
-| COMPLETAR | COMPLETAR | Gabriela | COMPLETAR | COMPLETAR |
-| COMPLETAR | COMPLETAR | Laura | COMPLETAR | COMPLETAR |
+| CT1 | Cadastrar cliente com todos os campos obrigatórios corretos (C1) | Laura | `ct1`, `cadastro` | ✅ Passou |
+| CT2 | Tentar cadastrar cliente com e-mail já existente (C1) | Laura | `ct2`, `cadastro` | ✅ Passou |
+| CT4 | Login com senha incorreta ou e-mail inexistente (C2) | Laura | `ct4`, `login` | ✅ Passou |
+| CT6 | Solicitar ser fabricante sem informar o endereço (C3) | Laura | `ct6`, `maker`, `defeito_conhecido` | ❌ Falha esperada (defeito: aceita sem endereço) |
+| CT7 | Administrador aprova cadastro de fabricante (C4) | Laura | `ct7`, `maker`, `admin` | ✅ Passou |
 | COMPLETAR | COMPLETAR | Pedro | COMPLETAR | COMPLETAR |
 
 ---
@@ -194,24 +228,42 @@ Cada teste automatizado referencia o ID do caso de teste do plano do RA2.
 - **CT19, divergência com o plano:** o plano indica "sem partes personalizadas", mas o formulário exige ao menos uma
   parte; o teste adiciona uma.
 
+**Achados dos testes (Laura):**
+- **CT6, defeito conhecido (C3):** ao solicitar ser Maker, o Printly **não exige o endereço** e aceita a solicitação
+  mesmo com o campo "Endereço da Empresa / Ateliê" em branco (o back-end só valida impressora e material). O teste
+  registra a falha de propósito (o esperado seria o bloqueio) e, em seguida, confere o comportamento real: a mensagem
+  de sucesso é exibida mesmo sem o endereço.
+- **Alertas nativos (CT1, CT2, CT4):** as mensagens de cadastro e de login são janelas nativas do navegador, que o
+  Selenium não fotografa; o texto de cada uma é validado e fica registrado no `log.html`.
+- **Cliques no rodapé:** o checkbox de termos e o botão "Cadastrar" ficam no fim da página; os cliques são feitos via
+  JavaScript (rolando até o centro) para evitar o erro "element click intercepted".
+
+**Dados criados pelos testes (Laura):**
+- O CT1, o CT6 e o CT7 cadastram um cliente novo (e-mail e nome únicos) a cada execução.
+- O CT6 cria uma solicitação de Maker pendente; o CT7 cria outra solicitação e a aprova, tornando o cliente um Maker.
+
 **Limitações da automação:**
 - Aspectos visuais e de usabilidade não são avaliados pela automação e continuam dependendo de testes manuais
   (por exemplo, o contorno azul do campo vazio no CT20: o teste confere que o campo está inválido e com o foco).
 - Alertas nativos do navegador (CT18 e CT21) não aparecem nos prints; o teste valida o texto deles e o registra no `log.html`.
 
-**Dados criados pelos testes:**
+**Dados criados pelos testes (Isabelle):**
 - O CT17 cadastra um PETG novo a cada execução.
 - O CT19 cria um pedido novo a cada execução, e o CT21 o consome ao aceitá-lo.
 
 **Outros:**
 - Os testes dependem do Printly rodando localmente e dos dados de teste importados.
-- `COMPLETAR`: casos do plano do RA2 que não foram automatizados e o motivo.
 
 ---
 
 ## 📦 Entrega
 
-`COMPLETAR` (formato e conteúdo do zip, após confirmação com o professor).
+A entrega é feita em **um único arquivo `.zip`**, enviado ao professor até **27/10/2026**.
+
+**Conteúdo do zip:**
+- `README.md` e `requirements.txt`;
+- a pasta de cada integrante (`bruno/`, `gabriela/`, `isabelle/`, `laura/` e `pedro/`), com `resources.robot`,
+  `testes.robot` e `resultados/` (relatórios, logs, XML e evidências em prints).
 
 ---
 
