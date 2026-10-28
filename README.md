@@ -91,14 +91,6 @@ py -m robot --version
 
 ## 🛒 Preparando o Printly
 
-Os testes só funcionam com o sistema no ar.
-
-1. Inicie **Apache** e **MySQL** no painel do XAMPP.
-2. Coloque o projeto Printly em: `COMPLETAR (ex.: pasta htdocs do XAMPP)`
-3. Importe o banco de dados: `COMPLETAR (nome do banco e arquivo .sql)`
-4. Importe os dados de teste: `COMPLETAR (script SQL com os usuários e registros usados nos testes)`
-5. Acesse no navegador: `http://localhost/Printly/public/`
-
 **Usuários de teste** (apenas dados fictícios; todos com a senha `123456`):
 
 | Perfil | Nome | E-mail |
