@@ -147,7 +147,7 @@ A ordem de execução dos testes é a ordem em que eles aparecem no `testes.robo
 
 | Integrante | Arquivo | Ordem de execução | Dependências e observações |
 |---|---|---|---|
-| Bruno | `bruno/testes.robot` | C23 → C16 → C20 → C8 → C21 | COMPLETAR |
+| Bruno | `bruno/testes.robot` | C23 → C16 → C20 → C8 → C21 | - |
 | Gabriela | `gabriela/testes.robot` | Ct09 → Ct10 → Ct11 → Ct12 → Ct15 | - |
 | Isabelle | `isabelle/testes.robot` | CT17 → CT18 → CT19 → CT20 → CT21 | O **CT21 depende do CT19**: ele aceita o pedido pendente criado pelo CT19, que deve rodar antes. Os demais são independentes. |
 | Laura | `laura/testes.robot` | CT1 → CT2 → CT4 → CT6 → CT7 | Independentes entre si: cada execução cria dados novos (e-mail e nome únicos). |
