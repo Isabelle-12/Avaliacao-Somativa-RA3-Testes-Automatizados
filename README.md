@@ -151,7 +151,7 @@ A ordem de execução dos testes é a ordem em que eles aparecem no `testes.robo
 | Gabriela | `gabriela/testes.robot` | COMPLETAR | COMPLETAR |
 | Isabelle | `isabelle/testes.robot` | CT17 → CT18 → CT19 → CT20 → CT21 | O **CT21 depende do CT19**: ele aceita o pedido pendente criado pelo CT19, que deve rodar antes. Os demais são independentes. |
 | Laura | `laura/testes.robot` | CT1 → CT2 → CT4 → CT6 → CT7 | Independentes entre si: cada execução cria dados novos (e-mail e nome únicos). |
-| Pedro | `pedro/testes.robot` | COMPLETAR | COMPLETAR |
+| Pedro | `pedro/testes.robot` | CT25 → CT27 → CT29 → CT30 → CT31 | Independentes entre si. Pressupõem que o cliente João tenha os projetos "Carrinho de Brinquedo" (com histórico), "Porta canetas" (Concluído, enviado em 27/10/2026) e "Caneca". |
 
 Se for necessário executar apenas parte dos testes da Isabelle por tag, mantenha o CT19 junto do CT21:
 
@@ -202,7 +202,11 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
 | CT4 | Login com senha incorreta ou e-mail inexistente (C2) | Laura | `ct4`, `login` | ✅ Passou |
 | CT6 | Solicitar ser fabricante sem informar o endereço (C3) | Laura | `ct6`, `maker`, `defeito_conhecido` | ❌ Falha esperada (defeito: aceita sem endereço) |
 | CT7 | Administrador aprova cadastro de fabricante (C4) | Laura | `ct7`, `maker`, `admin` | ✅ Passou |
-| COMPLETAR | COMPLETAR | Pedro | COMPLETAR | COMPLETAR |
+| CT25 | Cliente verifica o histórico de atualizações do pedido em ordem cronológica, com data, hora e descrição (C13) | Pedro | `ct25`, `projetos`, `historico` | ✅ Passou |
+| CT27 | Cliente verifica nome, data de envio, status e miniatura na lista de "Meus Projetos" (C14) | Pedro | `ct27`, `projetos`, `defeito_conhecido` | ❌ Falha esperada (miniatura não exibida) |
+| CT29 | Cliente filtra fabricantes por cidade/UF e vê apenas os da região (C15) | Pedro | `ct29`, `fabricantes`, `filtro` | ✅ Passou |
+| CT30 | Cliente filtra uma região sem fabricantes e vê a mensagem de nenhum encontrado (C15) | Pedro | `ct30`, `fabricantes`, `filtro` | ✅ Passou |
+| CT31 | Cliente envia mensagem ao fabricante e ela aparece com o horário do envio (C16) | Pedro | `ct31`, `chat` | ✅ Passou |
 
 ---
 
@@ -250,6 +254,15 @@ Cada teste automatizado referencia o ID do caso (`CTxx`) ou o número do cenári
 **Dados criados pelos testes (Isabelle):**
 - O CT17 cadastra um PETG novo a cada execução.
 - O CT19 cria um pedido novo a cada execução, e o CT21 o consome ao aceitá-lo.
+
+**Achados dos testes (Pedro):**
+- **CT27, defeito conhecido (C14):** a listagem de "Meus Projetos" exibe nome, data de envio e status, mas não exibe a
+  miniatura do projeto (aparece só o ícone de pasta). O teste registra a falha de propósito.
+- **CT27, divergência com o plano:** o plano indica o projeto "Porta Canetas", enviado em 20/09/2026; no banco usado
+  na automação o projeto se chama "Porta canetas" e foi enviado em 27/10/2026. O teste valida os dados reais.
+- **CT31:** grava uma mensagem nova no chat do projeto "Caneca" a cada execução.
+- Os projetos usados no testes feitos pelo Pedro não estão no `printly.sql`; precisam existir na conta do cliente João.
+
 
 **Outros:**
 - Os testes dependem do Printly rodando localmente e dos dados de teste importados.
